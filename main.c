@@ -1,46 +1,40 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <locale.h>
 #include "lib_1.h"
 
 int main()
 {
-    int n;
+    setlocale(LC_ALL,"");
+    int op;
     do{
-        printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-        printf("=-=-=-=-=-=    Jogo    -=-=-=-=-=-=\n");
-        printf("=-=-=    Comandos Em Loop    -=-=-=\n");
-        printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
-        printf("Menu de Opcoes\n");
-        printf("1 - Iniciar Jogo\n");
-        printf("2 - Informações\n");
-        printf("3 - \n");
-        printf("4 - Sair\n\n");
-
-        printf("Digite sua Opcao: ");
-        scanf("%d", &n);
+        menu();
+        printf("Digite sua Opção: ");
+        scanf("%d", &op);
         printf("\n");
         printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
-
-        switch(n){
+        switch(op){
         case 1:
-            Tabuleiro();
+            Impress_Tab();
             break;
 
         case 2:
+            Instrucoes();
             break;
 
         case 3:
+            Credits();
             break;
 
         case 4:
+            Exit();
             break;
-
         default:
             printf("Opcao invalida!\n\n");
             break;
         }
 
-    }while(n != 4);
+    }while(op != 5);
     return 0;
 }
 //
