@@ -9,10 +9,26 @@
 
 void Tabuleiro(){
     int i,j;
-    char TabMat [8][8];
-    TabMat[0][0] = 'P';
-    TabMat[7][7] = 'O';
 
+    // Tabela em Matriz
+    char TabMat [8][8];
+
+    // Atribui a Matriz da Tabela as posições menos as Colunas 'x'
+    TabMat[7][7] = 'O';
+    for(i = 0; i < 8; i++){
+        for(j = 0; j < 8; j++){
+            if(i == 0 && j == 0){
+                TabMat[0][0] = 'P';
+            }else
+            if(i == 7 && j == 7){
+                TabMat [8][8] = 'O';
+            }else{
+                TabMat [i][j] = ' ';
+            }
+        }
+    }
+
+    // Imprime a Tabela
     for(i = 0; i < 8; i++){
         printf("|---|---|---|---|---|---|---|---|\n");
         for(j = 0; j < 8; j++){
@@ -28,16 +44,6 @@ void Tabuleiro(){
             printf("|---|---|---|---|---|---|---|---|\n");
         }
     }
-
-//    printf("| P |   |   |   |   |   |   |   |\n");
-//    printf("|   |   |   |   |   |   |   |   |\n");
-//    printf("|   |   |   |   |   |   |   |   |\n");
-//    printf("|   |   |   |   |   |   |   |   |\n");
-//    printf("|   |   |   |   |   |   |   |   |\n");
-//    printf("|   |   |   |   |   |   |   |   |\n");
-//    printf("|   |   |   |   |   |   |   |   |\n");
-//    printf("|   |   |   |   |   |   |   | O |\n");
-//    printf("|---|---|---|---|---|---|---|---|\n");
 }
 
 /// Primeira Fase
