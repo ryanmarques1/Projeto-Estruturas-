@@ -9,7 +9,7 @@
 
 
 
-char** Impress_Tabuleiro(int dimensao){
+int Impress_Tabuleiro(int dimensao){
     system("cls");
     char **TabMat;
     int i,j;
@@ -28,7 +28,7 @@ char** Impress_Tabuleiro(int dimensao){
         if(i == 7) printf("|---|---|---|---|---|---|---|---|\n");
     }
     getchar();
-    return TabMat;
+    return 1;
 }
 
 void Instrucoes(void){
