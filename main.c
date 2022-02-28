@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+#include <time.h>
 #include "lib_1.h"
 
 int main()
@@ -15,7 +16,7 @@ int main()
         printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
         switch(op){
         case 1:
-            Impress_Tab();
+            Impress_TabFase1();
             break;
 
         case 2:

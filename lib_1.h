@@ -7,7 +7,10 @@
 
 /// Menu Fase
 
-void Impress_Tab(void){
+
+
+void Impress_TabFase1(void){
+    system("cls");
     int i,j;
     char TabMat[8][8];
     for(i = 0; i < 8; i++){
@@ -16,7 +19,15 @@ void Impress_Tab(void){
             if(j == 0) printf("|");
             if(i == 0 && j == 0) TabMat[0][0] = 'P';
             else if(i == 7 && j == 7) TabMat[7][7] = 'O';
-            else TabMat[i][j] = ' ';
+            else{
+                for(int k = 0; k < 10; k++){
+                    int a = rand() % 5;
+                    if(a == 0) ///se o numero randomico for 0, é trap.
+                        TabMat[i][j] = 'X';
+                    else
+                        TabMat[i][j] = ' ';
+                }
+            }
             printf(" %c |", TabMat[i][j]);
             if(j == 7) printf("\n");
         }
@@ -25,10 +36,10 @@ void Impress_Tab(void){
     getchar();
 }
 void Instrucoes(void){
-    printf("Podes assumir 4 sentidos: Direita, Esquerda, Cima, Baixo");
+    printf("Podes assumir 4 sentidos: Direita, Esquerda, Cima, Baixo.\nTens 3 vidas, perdeu as 3 GAME OVER.");
 }
 void Credits(void){
-    printf("Equipe: Ryan Marques, Bernardo Mirando, Mariana Castro\n\n");
+    printf("Equipe: Ryan Marques, Bernardo Miranda, Mariana Castro\n\n");
 }
 void Exit(void){
     char ex;
@@ -37,7 +48,7 @@ void Exit(void){
     printf(": ");
     getchar();
     scanf("%c", &ex);
-    if(ex == 'N') return;
+    if(ex == 'N' || ex == 'n') return;
     else exit(0);
 }
 /// Primeira Fase
@@ -63,6 +74,4 @@ void menu(){
     printf("3 - Créditos\n");
     printf("4 - Sair\n\n");
 }
-
-
 #endif // LIB_1_H_INCLUDED
