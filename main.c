@@ -7,7 +7,7 @@
 int main()
 {
     setlocale(LC_ALL,"");
-    int op;
+    int op, dimensao = 8;
     do{
         menu();
         printf("Digite sua Opção: ");
@@ -16,7 +16,7 @@ int main()
         printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
         switch(op){
         case 1:
-            Impress_TabFase1();
+            Impress_Tabuleiro(dimensao);
             break;
 
         case 2:

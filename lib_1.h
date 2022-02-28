@@ -9,34 +9,30 @@
 
 
 
-void Impress_TabFase1(void){
+char** Impress_Tabuleiro(int dimensao){
     system("cls");
+    char **TabMat;
     int i,j;
-    char TabMat[8][8];
-    for(i = 0; i < 8; i++){
+    TabMat = malloc(dimensao * sizeof(char*));
+    for(i = 0; i < dimensao; i++){
+        TabMat[i]  = malloc(dimensao * sizeof(char));
         printf("|---|---|---|---|---|---|---|---|\n");
-        for(j = 0; j < 8; j++){
+        for(j = 0; j < dimensao; j++){
             if(j == 0) printf("|");
             if(i == 0 && j == 0) TabMat[0][0] = 'P';
             else if(i == 7 && j == 7) TabMat[7][7] = 'O';
-            else{
-                for(int k = 0; k < 10; k++){
-                    int a = rand() % 5;
-                    if(a == 0) ///se o numero randomico for 0, é trap.
-                        TabMat[i][j] = 'X';
-                    else
-                        TabMat[i][j] = ' ';
-                }
-            }
+            else TabMat[i][j] = ' ';
             printf(" %c |", TabMat[i][j]);
             if(j == 7) printf("\n");
         }
         if(i == 7) printf("|---|---|---|---|---|---|---|---|\n");
     }
     getchar();
+    return TabMat;
 }
+
 void Instrucoes(void){
-    printf("Podes assumir 4 sentidos: Direita, Esquerda, Cima, Baixo.\nTens 3 vidas, perdeu as 3 GAME OVER.");
+    printf("Podes assumir 4 sentidos: Direita, Esquerda, Cima, Baixo.\nTens 3 vidas, perdeu as 3 GAME OVER.\n Dificuldade aleatória (Rogue Like).");
 }
 void Credits(void){
     printf("Equipe: Ryan Marques, Bernardo Miranda, Mariana Castro\n\n");
