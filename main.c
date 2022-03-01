@@ -20,7 +20,7 @@ int main()
         switch(op){
         case 1:
             TabMat = Create_Tabuleiro(dimensao);
-            traps_fase1(TabMat);
+            //traps_fase2(TabMat);
             Impress_Tabuleiro(TabMat,dimensao);
             break;
         case 2:
