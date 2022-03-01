@@ -7,30 +7,35 @@
 
 /// Menu Fase
 
-
-
-int Impress_Tabuleiro(int dimensao){
+char** Create_Tabuleiro(int dimensao){
     system("cls");
     char **TabMat;
     int i,j;
     TabMat = malloc(dimensao * sizeof(char*));
     for(i = 0; i < dimensao; i++){
         TabMat[i]  = malloc(dimensao * sizeof(char));
-        printf("|---|---|---|---|---|---|---|---|\n");
         for(j = 0; j < dimensao; j++){
-            if(j == 0) printf("|");
             if(i == 0 && j == 0) TabMat[0][0] = 'P';
             else if(i == 7 && j == 7) TabMat[7][7] = 'O';
             else TabMat[i][j] = ' ';
+        }
+    }
+    getchar();
+    return TabMat;
+}
+void Impress_Tabuleiro(char **TabMat, int dimensao){
+    int i,j;
+    for(i = 0; i < dimensao; i++){
+        printf("|---|---|---|---|---|---|---|---|\n");
+        for(j  = 0; j < dimensao; j++){
+            if(j == 0) printf("|");
             printf(" %c |", TabMat[i][j]);
             if(j == 7) printf("\n");
         }
-        if(i == 7) printf("|---|---|---|---|---|---|---|---|\n");
+        if(i == 7)  printf("|---|---|---|---|---|---|---|---|\n");
     }
     getchar();
-    return 1;
 }
-
 void Instrucoes(void){
     printf("Podes assumir 4 sentidos: Direita, Esquerda, Cima, Baixo.\nTens 3 vidas, perdeu as 3 GAME OVER.\n Dificuldade aleatória (Rogue Like).");
 }
