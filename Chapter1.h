@@ -36,8 +36,8 @@ void traps_fase1(char **TabMat){
     TabMat[1][1] = 'X';
     TabMat[1][2] = 'X';
     TabMat[2][1] = 'X';
-    TabMat[2][2] = 'X';
-    TabMat[2][3] = 'X';
+    TabMat[3][3] = 'X';
+    TabMat[3][4] = 'X';
     TabMat[5][0] = 'X';
     TabMat[5][1] = 'X';
     TabMat[5][2] = 'X';
@@ -47,9 +47,11 @@ void traps_fase1(char **TabMat){
     TabMat[4][2] = 'X';
     TabMat[6][1] = 'X';
     TabMat[6][2] = 'X';
+    TabMat[6][3] = 'X';
     TabMat[7][3] = 'X';
     TabMat[7][5] = 'X';
     TabMat[7][6] = 'X';
+
     ///-----------///
 }
 #endif // CHAPTER1_H_INCLUDED
