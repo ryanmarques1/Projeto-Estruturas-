@@ -37,7 +37,8 @@ void Impress_Tabuleiro(char **TabMat, int dimensao){
     getchar();
 }
 void Instrucoes(void){
-    printf("Podes assumir 4 sentidos: Direita, Esquerda, Cima, Baixo.\nTens 3 vidas, perdeu as 3 GAME OVER.\n Dificuldade aleatória (Rogue Like).");
+    printf("Podes assumir 4 sentidos: Direita, Esquerda, Cima, Baixo.\nTens 3 vidas, perdeu as 3 GAME OVER.\nDificuldade aleatória (Rogue Like).");
+    printf("\n3 dificuldades - Fase 1: Papai posso jogar? | Fase 2: Estou preparado para o que der e vier! | Fase 3: Rambo\n");
 }
 void Credits(void){
     printf("Equipe: Ryan Marques, Bernardo Miranda, Mariana Castro\n\n");

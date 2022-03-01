@@ -26,11 +26,9 @@ int main()
         case 2:
             Instrucoes();
             break;
-
         case 3:
             Credits();
             break;
-
         case 4:
             Exit();
             break;
