@@ -5,6 +5,7 @@
 #include <string.h>
 #include "lib_1.h"
 #include "Chapter1.h"
+#include "Chapter2.h"
 
 int main()
 {
@@ -20,7 +21,7 @@ int main()
         switch(op){
         case 1:
             TabMat = Create_Tabuleiro(dimensao);
-            //traps_fase2(TabMat);
+            traps_fase2(TabMat);
             Impress_Tabuleiro(TabMat,dimensao);
             break;
         case 2:
