@@ -2,11 +2,55 @@
 #define LIB_1_H_INCLUDED
 #include <stdio.h>
 #include <stdlib.h>
+#include "Chapter1.h"
+#include "Chapter2.h"
+
 
 /// Menu Programa
 
+// Menu do Programa
+void menu(){
+    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+    printf("=-=-=-=-=-=    Jogo    -=-=-=-=-=-=\n");
+    printf("=-=-=    Comandos Em Loop    -=-=-=\n");
+    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
+    printf("Menu de Opcoes\n");
+    printf("1 - Iniciar Jogo\n");
+    printf("2 - Instruções\n");
+    printf("3 - Créditos\n");
+    printf("4 - Sair\n\n");
+}
+
+// Instruções de como jogar
+void Instrucoes(void){
+    printf("Podes assumir 4 sentidos: Direita, Esquerda, Cima, Baixo (Depende da Seta de Indicação).\n");
+    printf("O Player possui 3 vidas e perde a vida caso o Player Não chegue ao final. Perdendo as 3 vidas GAME OVER.\n");
+    printf("\n3 dificuldades - Fase 1: Facil | Fase 2: Medio | Fase 3: Dificil\n");
+}
+
+// Função para mostrar o Grupo do Programa
+void Credits(void){
+    printf("Equipe: Ryan Marques, Bernardo Miranda, Mariana Castro\n\n");
+}
+
+// Função de Saida do Programa
+void Exit(void){
+    char ex;
+    printf("\nDesejas sair do jogo? \n");
+    printf("Y -> Sim , N -> Não");
+    printf(": ");
+    getchar();
+    scanf("%c", &ex);
+    if(ex == 'N' || ex == 'n') return;
+    else exit(0);
+}
+
 /// Menu Fase
 
+//Status Player------------------------------------------------------------------------------------------------------------
+
+
+// Cria o Tabuleiro atribuindo valores a posições da Matriz
 char** Create_Tabuleiro(int dimensao){
     system("cls");
     char **TabMat;
@@ -23,6 +67,8 @@ char** Create_Tabuleiro(int dimensao){
     getchar();
     return TabMat;
 }
+
+//Imprime o Tabuleiro
 void Impress_Tabuleiro(char **TabMat, int dimensao){
     int i,j;
     for(i = 0; i < dimensao; i++){
@@ -36,44 +82,5 @@ void Impress_Tabuleiro(char **TabMat, int dimensao){
     }
     getchar();
 }
-void Instrucoes(void){
-    printf("Podes assumir 4 sentidos: Direita, Esquerda, Cima, Baixo.\nTens 3 vidas, perdeu as 3 GAME OVER.\nDificuldade aleatória (Rogue Like).");
-    printf("\n3 dificuldades - Fase 1: Papai posso jogar? | Fase 2: Estou preparado para o que der e vier! | Fase 3: Rambo\n");
-}
-void Credits(void){
-    printf("Equipe: Ryan Marques, Bernardo Miranda, Mariana Castro\n\n");
-}
-void Exit(void){
-    char ex;
-    printf("\nDesejas sair do jogo? \n");
-    printf("Y -> Sim , N -> Não");
-    printf(": ");
-    getchar();
-    scanf("%c", &ex);
-    if(ex == 'N' || ex == 'n') return;
-    else exit(0);
-}
-/// Primeira Fase
-  ///7 caminhos pré-definidos. 8obstaculos - Fila Dinâmica ou Deque Dinâmico.
-/// Segunda Fase
-  ///5 caminhos pré-definidos. 13 obstaculos - Pilha dinâmica
-/// Terceira Fase
-  ///1 ou 2 caminhos pré-definido(s). 18 obstaculos - Fila Dinâmica ou Deque Dinâmico e Pilha dinâmica
-///Etc
-/*
-Fazer caminhos pré definidos e depois dispor dinamicamente
-os obstaculos que não PODEM interferir nos caminhos para a vitoria.
-*/
 
-void menu(){
-    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-    printf("=-=-=-=-=-=    Jogo    -=-=-=-=-=-=\n");
-    printf("=-=-=    Comandos Em Loop    -=-=-=\n");
-    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
-    printf("Menu de Opcoes\n");
-    printf("1 - Iniciar Jogo\n");
-    printf("2 - Instruções\n");
-    printf("3 - Créditos\n");
-    printf("4 - Sair\n\n");
-}
 #endif // LIB_1_H_INCLUDED

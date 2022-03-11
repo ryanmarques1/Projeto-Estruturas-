@@ -2,38 +2,50 @@
 #define CHAPTER1_H_INCLUDED
 
 
-/*
+//Estrutura Fila Dinâmica.
 
-Estrutura Fila Dinâmica.
-*/
+// Dados Da Fila (Struct Dices)
 typedef struct Dices{
     int NumdoComando;
     int vezesExec;
 }infos;
+
+// Nó que contem Os Dados e posições do nó da frente
 typedef struct NOS{
     struct Dices infos;
     struct NOS* next;
 }NOF;
+
+// "Cabeçalho" da Fila onde Contem seu Inicio e Fim
 typedef struct Fila{
     NOF* ini;
     NOF* fim;
 }sFila;
 
+// Alocar a Fila
 sFila* alloc_fila(){
     return malloc(sizeof(sFila));
 }
+
+// Alocar Nós
 NOF* alloc_nos(){
     return malloc(sizeof(NOF));
 }
+
+// Função de Iniciar Fila, Atribuindo Inicio e Fim como NULL;
 void ini_fila(sFila *f){
     f->ini = NULL;
     f->fim = NULL;
 }
+
+// Função de Verificar se a Fila está vazia
 int fila_vazia(sFila *f){
     if(f->ini == NULL)
         return 1;
     return 0;
 }
+
+// Função que Insere os dados na Fila (Comando e Numero de Vezes que irá repetir
 void insere_listaComandos(sFila *f, struct Dices infos){
     NOF* nos = NULL;
     nos = alloc_nos();
@@ -50,6 +62,17 @@ void insere_listaComandos(sFila *f, struct Dices infos){
         exit(1);
     }
 }
+
+int Move_Player(sFila *f){
+    // Direita = 1 | Esquerda = 2 | Acima = 3 | Baixo = 4
+    int sentido = 1;
+    while(f->ini != NULL){
+
+    }
+
+}
+
+// Posição das Barreiras onde o Player não pode ultrapassar (Pré Defenido)
 void traps_fase1(char **TabMat){
     ///Fase 1 TRAPS.///(Completo)
     TabMat[0][7] = 'X';
@@ -77,4 +100,5 @@ void traps_fase1(char **TabMat){
     TabMat[7][6] = 'X';
     ///----------------///
 }
+
 #endif // CHAPTER1_H_INCLUDED

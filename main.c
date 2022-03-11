@@ -4,22 +4,24 @@
 #include <time.h>
 #include <string.h>
 #include "lib_1.h"
-#include "Chapter1.h"
-#include "Chapter2.h"
 
 int main()
 {
     setlocale(LC_ALL,"");
-    sFila *f =  NULL;
-    infos L;
-    int op, dimensao = 8, healthPoints = 3;
-    char **TabMat;
-    f = alloc_fila();
-    if(f == NULL){ //se for null, erro ao alocar, senão inicia fila.
-        printf("\nErro de alocação\n");
-        exit(1);
-    }else
-        ini_fila(f);
+
+
+    int n,op, dimensao = 8, vida=3;
+    char **MAT;
+
+//    sFila *f =  NULL;
+//    f = alloc_fila();
+//    if(f == NULL){ //se for null, erro ao alocar, senão inicia fila.
+//        printf("\nErro de alocação\n");
+//        exit(1);
+//    }else
+//        ini_fila(f);
+
+    ///Inicio
     do{
         menu();
         printf("Digite sua Opção: ");
@@ -28,12 +30,22 @@ int main()
         printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
         switch(op){
         case 1:
-            TabMat = Create_Tabuleiro(dimensao);
-            traps_fase1(TabMat);
-            Impress_Tabuleiro(TabMat,dimensao);
-            /*printf("Digite o numero referente a lista de comandos e as vezes que será executado: ");
-            scanf("%d %d", &L.NumdoComando, &L.vezesExec);
-            insere_listaComandos(f,L);*/
+            /// Fase 1
+            while(vida != 0){
+                MAT = Create_Tabuleiro(dimensao);
+                traps_fase1(MAT);
+                Impress_Tabuleiro(MAT,dimensao);
+                n = Move_Player();
+                if(n == 0){
+                    vida--;
+                }else{
+                    break;
+                }
+
+            }
+
+            /// Fase 2
+
             break;
         case 2:
             Instrucoes();
