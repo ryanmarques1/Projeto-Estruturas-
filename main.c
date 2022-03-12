@@ -5,23 +5,14 @@
 #include <string.h>
 #include "lib_1.h"
 
+
 int main()
 {
     setlocale(LC_ALL,"");
-
     infos info;
-
+    infos_f2 info_f2;
     int n,op, dimensao = 8, vida=3;
     char **MAT;
-
-    sFila *f =  NULL;
-    f = alloc_fila();
-    if(f == NULL){ //se for null, erro ao alocar, senão inicia fila.
-        printf("\nErro de alocação\n");
-        exit(1);
-    }else
-        ini_fila(f);
-
     ///Inicio
     do{
         menu();
@@ -33,6 +24,15 @@ int main()
         case 1:
             /// Fase 1
             while(vida != 0){
+                printf("\n--------------------------=Fase 1=-----------------------------\n\n");
+                sFila *f =  NULL;
+                f = alloc_fila();
+                if(f == NULL){ //se for null, erro ao alocar, senão inicia fila.
+                    printf("\nErro de alocação\n");
+                    exit(1);
+                }else
+                    ini_fila(f);
+                ///=- So cria a fila no case 1-=///
                 MAT = Create_Tabuleiro(dimensao);
                 traps_fase1(MAT);
                 Impress_Tabuleiro(MAT,dimensao);
@@ -51,14 +51,38 @@ int main()
                 if(n == 0){
                     printf("\n----------------------=Perdeu Vida Mané=-----------------------------\n");
                     vida--;
+                    if(vida == 0)
+                        printf("\n----------------------=GAME OVER=-----------------------------\n");
                 }else{
                     printf("\n----------------------=Fase 1 Concluida=-----------------------------\n\n");
-                    break;
+                    destroi_fila(f);
+                    //break;
                 }
+
+                /*printf("\n");
+                /// Fase 2
+                printf("\n--------------------------=Fase 2=-----------------------------\n\n");
+                Pilha *pl = NULL;
+                pl = alloc_pilha();
+                if(pl == NULL){
+                    printf("\nErro de alocação\n");
+                    exit(1);
+                }else
+                    ini_pilha(pl);
+                MAT = Create_Tabuleiro(dimensao);
+                traps_fase2(MAT);
+                Impress_Tabuleiro(MAT,dimensao);
+                while(1){
+                    printf("Qual comando:");
+                    scanf("%d",&info_f2.NumdoComando);
+                    printf("Quantidade de vezes:");
+                    scanf("%d",&info_f2.vezesExec);
+                    if(info_f2.NumdoComando == 0 && info_f2.vezesExec == 0){
+                        break;
+                    }
+                    insere_listaComandos_F2(pl,info_f2);
+                }*/
             }
-
-            /// Fase 2
-
             break;
         case 2:
             Instrucoes();
@@ -73,7 +97,6 @@ int main()
             printf("Opcao invalida!\n\n");
             break;
         }
-
     }while(op != 5);
     return 0;
 }

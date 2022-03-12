@@ -1,5 +1,6 @@
 #ifndef CHAPTER1_H_INCLUDED
 #define CHAPTER1_H_INCLUDED
+
 #include "lib_1.h"
 
 
@@ -46,9 +47,22 @@ int fila_vazia(sFila *f){
         return 1;
     return 0;
 }
-
+void destroi_fila(sFila *f){
+    NOF* aux = NULL;
+    if(f != NULL){
+        while(f->ini != NULL){
+            aux = f->ini;
+            f->ini = f->ini->next;
+            free(aux);
+        }
+        free(f);
+        printf("\nDeu certo!\n");
+        return;
+    }
+    printf("\nNão deu certo!\n");
+}
 ///------------------------------------------------------------------------------------------------------------------------------------
-
+///-------------------------///
 // Função que Insere os dados na Fila (Comando e Numero de Vezes que irá repetir
 void insere_listaComandos_F1(sFila *f, struct Dices infos){
     NOF* nos = NULL;
@@ -64,80 +78,6 @@ void insere_listaComandos_F1(sFila *f, struct Dices infos){
     }else{
         printf("\nErro de alocação\n");
         exit(1);
-    }
-}
-
-void Orientacoes1(int ot,char** MAT,int* x, int* y){
-    if(ot == 1){
-        *y = *y + 1;
-        if(MAT[(*x)][(*y)] == 'X' || *y >= 8){//P volta a sua posição anterior pois tem obstaculo
-            *y = *y - 1;
-        }else{// P assume a posição se não houver obstaculo
-            MAT[(*x)][(*y)] = 'P';
-            MAT[(*x)][(*y-1)] = ' ';
-        }
-    }else
-    if(ot == 2){
-        *y = *y - 1;
-        if(MAT[(*x)][(*y)] == 'X' || *y < 0){//P volta a sua posição anterior pois tem obstaculo
-            *y = *y + 1;
-        }else{// P assume a posição se não houver obstaculo
-            MAT[(*x)][(*y)] = 'P';
-            MAT[(*x)][(*y+1)] = ' ';
-        }
-    }
-    else
-    if(ot == 3){
-        *x = *x - 1;
-        if(MAT[(*x)][(*y)] == 'X' || *x < 0){//P volta a sua posição anterior pois tem obstaculo
-            *x = *x + 1;
-        }else{// P assume a posição se não houver obstaculo
-            MAT[(*x)][(*y)] = 'P';
-            MAT[(*x+1)][(*y)] = ' ';
-        }
-    }
-    else
-    if(ot == 4){
-        *x = *x + 1;
-        if(MAT[(*x)][(*y)] == 'X' || *x >= 8){//P volta a sua posição anterior pois tem obstaculo
-            *x = *x - 1;
-        }else{ // P assume a posição se não houver obstaculo
-            MAT[(*x)][(*y)] = 'P';
-            MAT[(*x-1)][(*y)] = ' ';
-        }
-    }
-}
-
-void Orientacoes2(int* ot, char c){
-    if(*ot == 1){ // Direção para Direita
-        if(c == 'D'){
-            *ot = 4;
-        }else{
-            *ot = 3;
-        }
-    }else
-    if(*ot == 2){// Direção para Esquerda
-        if(c == 'D'){
-            *ot = 3;
-        }else{
-            *ot = 4;
-        }
-    }
-    else
-    if(*ot == 3){// Direção para Cima
-       if(c == 'D'){
-            *ot = 1;
-        }else{
-            *ot = 2;
-        }
-    }
-    else
-    if(*ot == 4){// Direção para Baixo
-        if(c == 'D'){
-            *ot = 2;
-        }else{
-            *ot = 1;
-        }
     }
 }
 
