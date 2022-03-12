@@ -9,17 +9,18 @@ int main()
 {
     setlocale(LC_ALL,"");
 
+    infos info;
 
     int n,op, dimensao = 8, vida=3;
     char **MAT;
 
-//    sFila *f =  NULL;
-//    f = alloc_fila();
-//    if(f == NULL){ //se for null, erro ao alocar, senão inicia fila.
-//        printf("\nErro de alocação\n");
-//        exit(1);
-//    }else
-//        ini_fila(f);
+    sFila *f =  NULL;
+    f = alloc_fila();
+    if(f == NULL){ //se for null, erro ao alocar, senão inicia fila.
+        printf("\nErro de alocação\n");
+        exit(1);
+    }else
+        ini_fila(f);
 
     ///Inicio
     do{
@@ -35,13 +36,25 @@ int main()
                 MAT = Create_Tabuleiro(dimensao);
                 traps_fase1(MAT);
                 Impress_Tabuleiro(MAT,dimensao);
-                n = Move_Player();
+                Dados_Player_F1(1,vida);
+                while(1){
+                    printf("Qual comando:");
+                    scanf("%d",&info.NumdoComando);
+                    printf("Quantidade de vezes:");
+                    scanf("%d",&info.vezesExec);
+                    if(info.NumdoComando == 0 && info.vezesExec == 0){
+                        break;
+                    }
+                    insere_listaComandos_F1(f,info);
+                }
+                n = Move_Player_F1(f,MAT,vida);
                 if(n == 0){
+                    printf("\n----------------------=Perdeu Vida Mané=-----------------------------\n");
                     vida--;
                 }else{
+                    printf("\n----------------------=Fase 1 Concluida=-----------------------------\n\n");
                     break;
                 }
-
             }
 
             /// Fase 2

@@ -1,9 +1,12 @@
 #ifndef CHAPTER1_H_INCLUDED
 #define CHAPTER1_H_INCLUDED
+#include "lib_1.h"
+
+
+///------------------------------------------------------------------------------------------------------------------------------------
 
 
 //Estrutura Fila Dinâmica.
-
 // Dados Da Fila (Struct Dices)
 typedef struct Dices{
     int NumdoComando;
@@ -31,7 +34,6 @@ sFila* alloc_fila(){
 NOF* alloc_nos(){
     return malloc(sizeof(NOF));
 }
-
 // Função de Iniciar Fila, Atribuindo Inicio e Fim como NULL;
 void ini_fila(sFila *f){
     f->ini = NULL;
@@ -45,8 +47,10 @@ int fila_vazia(sFila *f){
     return 0;
 }
 
+///------------------------------------------------------------------------------------------------------------------------------------
+
 // Função que Insere os dados na Fila (Comando e Numero de Vezes que irá repetir
-void insere_listaComandos(sFila *f, struct Dices infos){
+void insere_listaComandos_F1(sFila *f, struct Dices infos){
     NOF* nos = NULL;
     nos = alloc_nos();
     if(nos != NULL){
@@ -63,11 +67,173 @@ void insere_listaComandos(sFila *f, struct Dices infos){
     }
 }
 
-int Move_Player(sFila *f){
-    // Direita = 1 | Esquerda = 2 | Acima = 3 | Baixo = 4
-    int sentido = 1;
-    while(f->ini != NULL){
+void Orientacoes1(int ot,char** MAT,int* x, int* y){
+    if(ot == 1){
+        *y = *y + 1;
+        if(MAT[(*x)][(*y)] == 'X' || *y >= 8){//P volta a sua posição anterior pois tem obstaculo
+            *y = *y - 1;
+        }else{// P assume a posição se não houver obstaculo
+            MAT[(*x)][(*y)] = 'P';
+            MAT[(*x)][(*y-1)] = ' ';
+        }
+    }else
+    if(ot == 2){
+        *y = *y - 1;
+        if(MAT[(*x)][(*y)] == 'X' || *y < 0){//P volta a sua posição anterior pois tem obstaculo
+            *y = *y + 1;
+        }else{// P assume a posição se não houver obstaculo
+            MAT[(*x)][(*y)] = 'P';
+            MAT[(*x)][(*y+1)] = ' ';
+        }
+    }
+    else
+    if(ot == 3){
+        *x = *x - 1;
+        if(MAT[(*x)][(*y)] == 'X' || *x < 0){//P volta a sua posição anterior pois tem obstaculo
+            *x = *x + 1;
+        }else{// P assume a posição se não houver obstaculo
+            MAT[(*x)][(*y)] = 'P';
+            MAT[(*x+1)][(*y)] = ' ';
+        }
+    }
+    else
+    if(ot == 4){
+        *x = *x + 1;
+        if(MAT[(*x)][(*y)] == 'X' || *x >= 8){//P volta a sua posição anterior pois tem obstaculo
+            *x = *x - 1;
+        }else{ // P assume a posição se não houver obstaculo
+            MAT[(*x)][(*y)] = 'P';
+            MAT[(*x-1)][(*y)] = ' ';
+        }
+    }
+}
 
+void Orientacoes2(int* ot, char c){
+    if(*ot == 1){ // Direção para Direita
+        if(c == 'D'){
+            *ot = 4;
+        }else{
+            *ot = 3;
+        }
+    }else
+    if(*ot == 2){// Direção para Esquerda
+        if(c == 'D'){
+            *ot = 3;
+        }else{
+            *ot = 4;
+        }
+    }
+    else
+    if(*ot == 3){// Direção para Cima
+       if(c == 'D'){
+            *ot = 1;
+        }else{
+            *ot = 2;
+        }
+    }
+    else
+    if(*ot == 4){// Direção para Baixo
+        if(c == 'D'){
+            *ot = 2;
+        }else{
+            *ot = 1;
+        }
+    }
+}
+
+//Atualização da Tabela
+void Att_Tab(char **TabMat, int dimensao){
+
+    int i,j;
+    for(i = 0; i < dimensao; i++){
+        printf("|---|---|---|---|---|---|---|---|\n");
+        for(j  = 0; j < dimensao; j++){
+            if(j == 0) printf("|");
+            printf(" %c |", TabMat[i][j]);
+            if(j == 7) printf("\n");
+        }
+        if(i == 7)  printf("|---|---|---|---|---|---|---|---|\n");
+    }
+}
+
+//Imprime Dados do Player
+void Dados_Player_F1(int ot,int vida){
+    printf("\n-=-=-=-=-=-=-= Comandos =-=-=-=-=-=-=-\n");
+    printf("1) [F,D,F]\t"); //Comando 1
+    printf("2) [F,F]\t");     //Comando 2
+    printf("3) [D,F,F]\t"); //Comando 3
+    printf("4) [E,F,F]\n"); //Comando 4
+
+
+    printf("\n-=-=-=-=-=-=-= Status do Player =-=-=-=-=-=-=-\n");
+    if(ot == 1){
+        printf("P >\tVida: %d\n", vida);
+    }else
+    if(ot == 2){
+        printf("< P\tVida: %d\n", vida);
+    }else
+    if(ot == 3){
+        printf("P^\tVida: %d\n^\n", vida);
+    }else
+    if(ot == 4){
+        printf("P\tVida: %d\nv\n", vida);
+    }
+    printf("\n");
+}
+
+// Mover Player na Tabela
+int Move_Player_F1(sFila *f,char** MAT, int vida){
+    NOF* aux = f->ini;
+    //Orientação Player = ot
+    // Direita = 1 | Esquerda = 2 | Acima = 3 | Baixo = 4
+    int ot = 1,i,x=0,y=0,h=8;
+    //x e y são as posições do P no tabuleiro (Matriz)
+
+    //Loop ate Fila Acabar
+    while(aux != NULL){
+        if(aux->infos.NumdoComando == 1){
+            for(i = 0; i < aux->infos.vezesExec; i++){
+                Orientacoes1(ot,MAT,&x,&y); //Orientção de Andar para Frente
+                Orientacoes2(&ot,'D'); //Orientção de Girar pra Direita
+                Orientacoes1(ot,MAT,&x,&y); //Orientção de Andar para Frente
+            }
+            Att_Tab(MAT,h);
+        }else
+        if(aux->infos.NumdoComando == 2){
+            for(i = 0; i < aux->infos.vezesExec; i++){
+                Orientacoes1(ot,MAT,&x,&y); //Orientção de Andar para Frente
+                Orientacoes1(ot,MAT,&x,&y); //Orientção de Andar para Frente
+            }
+            Att_Tab(MAT,h);
+        }else
+        if(aux->infos.NumdoComando == 3){
+            for(i = 0; i < aux->infos.vezesExec; i++){
+                Orientacoes2(&ot,'D');//Orientção de Girar pra Direita
+                Orientacoes1(ot,MAT,&x,&y);//Orientção de Andar para Frente
+                Orientacoes1(ot,MAT,&x,&y);//Orientção de Andar para Frente
+            }
+            Att_Tab(MAT,h);
+        }else
+        if(aux->infos.NumdoComando == 4){
+            for(i = 0; i < aux->infos.vezesExec; i++){
+                Orientacoes2(&ot,'E');
+                Orientacoes1(ot,MAT,&x,&y);
+                Orientacoes1(ot,MAT,&x,&y);
+            }
+            Att_Tab(MAT,h);
+        }
+        Dados_Player_F1(ot,vida);
+        NOF* aux2 = aux;
+        aux = aux->next;
+        free(aux2);
+    }
+    //F recebe Aux para resetar, ou seja, falar que lista ta vazia
+    f->ini=aux;
+    f->fim=aux;
+    if(x == 7 && y == 7){
+        return 1; // Vitoria da Fase
+    }else{
+        return 0; // Derrota da Fase
     }
 
 }

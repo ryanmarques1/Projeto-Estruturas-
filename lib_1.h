@@ -47,12 +47,9 @@ void Exit(void){
 
 /// Menu Fase
 
-//Status Player------------------------------------------------------------------------------------------------------------
-
-
 // Cria o Tabuleiro atribuindo valores a posições da Matriz
 char** Create_Tabuleiro(int dimensao){
-    system("cls");
+//    system("cls");
     char **TabMat;
     int i,j;
     TabMat = malloc(dimensao * sizeof(char*));
@@ -64,7 +61,6 @@ char** Create_Tabuleiro(int dimensao){
             else TabMat[i][j] = ' ';
         }
     }
-    getchar();
     return TabMat;
 }
 
@@ -80,7 +76,7 @@ void Impress_Tabuleiro(char **TabMat, int dimensao){
         }
         if(i == 7)  printf("|---|---|---|---|---|---|---|---|\n");
     }
-    getchar();
+
 }
 
 #endif // LIB_1_H_INCLUDED
