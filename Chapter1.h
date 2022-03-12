@@ -1,12 +1,13 @@
 #ifndef CHAPTER1_H_INCLUDED
 #define CHAPTER1_H_INCLUDED
-
 #include "lib_1.h"
 
 
 ///------------------------------------------------------------------------------------------------------------------------------------
-
-
+void Orientacoes1(int ot,char** MAT,int* x, int* y);
+void Orientacoes2(int* ot, char c);
+void Dados_Player_F1(int ot,int vida);
+void Att_Tab(char **TabMat, int dimensao);
 //Estrutura Fila Dinâmica.
 // Dados Da Fila (Struct Dices)
 typedef struct Dices{
@@ -80,47 +81,6 @@ void insere_listaComandos_F1(sFila *f, struct Dices infos){
         exit(1);
     }
 }
-
-//Atualização da Tabela
-void Att_Tab(char **TabMat, int dimensao){
-
-    int i,j;
-    for(i = 0; i < dimensao; i++){
-        printf("|---|---|---|---|---|---|---|---|\n");
-        for(j  = 0; j < dimensao; j++){
-            if(j == 0) printf("|");
-            printf(" %c |", TabMat[i][j]);
-            if(j == 7) printf("\n");
-        }
-        if(i == 7)  printf("|---|---|---|---|---|---|---|---|\n");
-    }
-}
-
-//Imprime Dados do Player
-void Dados_Player_F1(int ot,int vida){
-    printf("\n-=-=-=-=-=-=-= Comandos =-=-=-=-=-=-=-\n");
-    printf("1) [F,D,F]\t"); //Comando 1
-    printf("2) [F,F]\t");     //Comando 2
-    printf("3) [D,F,F]\t"); //Comando 3
-    printf("4) [E,F,F]\n"); //Comando 4
-
-
-    printf("\n-=-=-=-=-=-=-= Status do Player =-=-=-=-=-=-=-\n");
-    if(ot == 1){
-        printf("P >\tVida: %d\n", vida);
-    }else
-    if(ot == 2){
-        printf("< P\tVida: %d\n", vida);
-    }else
-    if(ot == 3){
-        printf("P^\tVida: %d\n^\n", vida);
-    }else
-    if(ot == 4){
-        printf("P\tVida: %d\nv\n", vida);
-    }
-    printf("\n");
-}
-
 // Mover Player na Tabela
 int Move_Player_F1(sFila *f,char** MAT, int vida){
     NOF* aux = f->ini;
@@ -177,7 +137,6 @@ int Move_Player_F1(sFila *f,char** MAT, int vida){
     }
 
 }
-
 // Posição das Barreiras onde o Player não pode ultrapassar (Pré Defenido)
 void traps_fase1(char **TabMat){
     ///Fase 1 TRAPS.///(Completo)

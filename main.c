@@ -11,8 +11,8 @@ int main()
     setlocale(LC_ALL,"");
     infos info;
     infos_f2 info_f2;
-    int n,op, dimensao = 8, vida=3;
     char **MAT;
+    int n,op, dimensao = 8, vida=3;
     ///Inicio
     do{
         menu();
@@ -56,7 +56,7 @@ int main()
                 }else{
                     printf("\n----------------------=Fase 1 Concluida=-----------------------------\n\n");
                     destroi_fila(f);
-                    //break;
+                    break;
                 }
 
                 /*printf("\n");

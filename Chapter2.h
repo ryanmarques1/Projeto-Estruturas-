@@ -3,7 +3,10 @@
 #include "lib_1.h"
 
 
-
+void Orientacoes1(int ot,char** MAT,int* x, int* y);
+void Orientacoes2(int* ot, char c);
+void Dados_Player_F1(int ot,int vida);
+void Att_Tab(char **TabMat, int dimensao);
 ///Definição da Pilha
 
 typedef struct Dices_f2{
@@ -25,7 +28,6 @@ NOP* alloc_nosP(){
 void ini_pilha(Pilha *pl){
     *pl = NULL;
 }
-
 ///------------------------------------------------------------------------------------------------------------------------------------
 // Função que Insere os dados na Pilha (Comando e Numero de Vezes que irá repetir)
 void insere_listaComandos_F2(Pilha *pl, struct Dices_f2 infos_f2){

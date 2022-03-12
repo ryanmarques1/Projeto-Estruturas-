@@ -78,6 +78,7 @@ void Impress_Tabuleiro(char **TabMat, int dimensao){
     }
 
 }
+///---------------------------===========--------------------==================////
 void Orientacoes1(int ot,char** MAT,int* x, int* y){
     if(ot == 1){
         *y = *y + 1;
@@ -149,6 +150,46 @@ void Orientacoes2(int* ot, char c){
         }else{
             *ot = 1;
         }
+    }
+}
+///---------------------------===========--------------------==================////
+//Imprime Dados do Player
+void Dados_Player_F1(int ot,int vida){
+    printf("\n-=-=-=-=-=-=-= Comandos =-=-=-=-=-=-=-\n");
+    printf("1) [F,D,F]\t"); //Comando 1
+    printf("2) [F,F]\t");     //Comando 2
+    printf("3) [D,F,F]\t"); //Comando 3
+    printf("4) [E,F,F]\n"); //Comando 4
+
+
+    printf("\n-=-=-=-=-=-=-= Status do Player =-=-=-=-=-=-=-\n");
+    if(ot == 1){
+        printf("P >\tVida: %d\n", vida);
+    }else
+    if(ot == 2){
+        printf("< P\tVida: %d\n", vida);
+    }else
+    if(ot == 3){
+        printf("P^\tVida: %d\n^\n", vida);
+    }else
+    if(ot == 4){
+        printf("P\tVida: %d\nv\n", vida);
+    }
+    printf("\n");
+}
+//Atualização da tabela.
+//Atualização da Tabela
+void Att_Tab(char **TabMat, int dimensao){
+
+    int i,j;
+    for(i = 0; i < dimensao; i++){
+        printf("|---|---|---|---|---|---|---|---|\n");
+        for(j  = 0; j < dimensao; j++){
+            if(j == 0) printf("|");
+            printf(" %c |", TabMat[i][j]);
+            if(j == 7) printf("\n");
+        }
+        if(i == 7)  printf("|---|---|---|---|---|---|---|---|\n");
     }
 }
 #endif // LIB_1_H_INCLUDED
