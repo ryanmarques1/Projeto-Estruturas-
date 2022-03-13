@@ -9,13 +9,13 @@
 int main()
 {
     setlocale(LC_ALL,"");
-        infos info;
+    infos info_f1;
     infos_f2 info_f2;
     char **MAT;
     int n,op, dimensao = 8;
     ///Inicio
     do{
-        int vida=3;
+        int vida = 3;
         menu();
         printf("Digite sua Opção: ");
         scanf("%d", &op);
@@ -44,35 +44,34 @@ int main()
                 Dados_Player(1,vida);
                 printf("Digite 0 0 para finalizar!\n");
                 while(1){
-                    printf("Qual comando:");
-                    scanf("%d",&info.NumdoComando);
-                    printf("Quantidade de vezes:");
-                    scanf("%d",&info.vezesExec);
-                    if(info.NumdoComando > 4 || (info.NumdoComando <= 0 && info.vezesExec != 0)){
-                        printf("Comando Invalido\n");
+                    printf("Digite o número referente a seção de comandos listado acima(Ex: 1 [F,D,F]): ");
+                    scanf("%d",&info_f1.NumdoComando);
+                    printf("\n");
+                    printf("Quantidade de vezes que o comando repetiá: ");
+                    scanf("%d",&info_f1.vezesExec);
+                    if(info_f1.NumdoComando > 4 || (info_f1.NumdoComando <= 0 && info_f1.vezesExec != 0)){
+                        printf("Comando digitado é inválido. Digite novamente!\n");
                         continue;
                     }
-                    if(info.NumdoComando == 0 && info.vezesExec == 0){
+                    if(info_f1.NumdoComando == 0 && info_f1.vezesExec == 0){
                         break;
                     }
-                    insere_listaComandos_F1(f,info);
+                    insere_listaComandos_F1(f,info_f1);
                 }
                 n = Move_Player_F1(f,MAT,vida);
                 if(n == 0){
-                    printf("\n----------------------=Perdeu Vida Mané=-----------------------------\n");
+                    printf("\n----------------------=Uma vida a menos =( (Você não tem 7 vidas...)=-----------------------------\n");
                     vida--;
                     if(vida == 0){
                         printf("\n----------------------=GAME OVER=-----------------------------\n");
                         break;
                     }
                 }else{
-                    printf("\n----------------------=Fase 1 Concluida=-----------------------------\n\n");
+                    printf("\n----------------------=FASE 1 Concluída=-----------------------------\n\n");
                     destroi_fila(f);
                     break;
                 }
-
                 printf("\n");
-
             }
 
 /// Fase 2 ------------------------------------------------------------------------------------------------------------
@@ -94,12 +93,13 @@ int main()
                 Dados_Player(4,vida);
                 printf("Digite 0 0 para finalizar!\n");
                 while(1){
-                    printf("Qual comando:");
+                    printf("Digite o número referente a seção de comandos listado acima(Ex: 2 [F,F]):");
                     scanf("%d",&info_f2.NumdoComando);
-                    printf("Quantidade de vezes:");
+                    printf("\n");
+                    printf("Quantidade de vezes que o comando repetirá: ");
                     scanf("%d",&info_f2.vezesExec);
                     if(info_f2.NumdoComando > 3 || (info_f2.NumdoComando <= 0 && info_f2.vezesExec != 0)){
-                        printf("Comando Invalido\n");
+                        printf("Comando digitado é inválido. Digite novamente!\n");
                         continue;
                     }
                     if(info_f2.NumdoComando == 0 && info_f2.vezesExec == 0){
@@ -109,18 +109,23 @@ int main()
                 }
                 n = Move_Player_F2(pl,MAT,vida);
                 if(n == 0){
-                    printf("\n----------------------=Perdeu Vida Mané=-----------------------------\n");
+                    printf("\n----------------------=Uma vida a menos =( (Você não tem 7 vidas...)=-----------------------------\n");
                     vida--;
                     if(vida == 0){
                         printf("\n----------------------=GAME OVER=-----------------------------\n");
                         break;
                     }
                 }else{
-                    printf("\n----------------------=Fase 2 Concluida=-----------------------------\n\n");
+                    printf("\n----------------------=FASE 2 Concluida=-----------------------------\n\n");
                 }
-
                 printf("\n");
             }
+
+/// Fase 3 ------------------------------------------------------------------------------------------------------------
+            /*while(vida != 0){
+                printf("\n--------------------------=Fase 3=-----------------------------\n\n");
+
+            }*/
             break;
         case 2:
             Instrucoes();
