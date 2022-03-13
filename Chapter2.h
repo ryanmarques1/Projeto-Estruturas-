@@ -31,7 +31,17 @@ NOP* alloc_nosP(){
 void ini_pilha(Pilha *pl){
     *pl = NULL;
 }
-
+void destroi_pilha(Pilha *pl){
+    NOP* aux = NULL;
+    if(pl != NULL){
+        while((*pl)!=NULL){
+            aux = *pl;
+            *pl = (*pl)->top;
+            free(aux);
+        }
+        free(pl);
+    }
+}
 // Função que Insere os dados na Pilha (Comando e Numero de Vezes que irá repetir)
 void insere_listaComandos_F2(Pilha *pl, struct Dices_f2 infos_f2){
     NOP* nos = NULL;

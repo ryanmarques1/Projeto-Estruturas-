@@ -7,63 +7,21 @@ void Orientacoes2(int* ot, char c);
 void Dados_Player(int ot,int vida);
 void Att_Tab(char **TabMat, int dimensao);
 void Comandos_F3();
-///-------------------Estruturas----------------------///
+///-------------------Sobre as Estruturas----------------------///
+
+NOF* alloc_nos();
+void ini_fila(sFila *f);
 
 
-//Estrutura Fila Dinâmica.
-// Dados Da Fila (Struct Dices)
-typedef struct Dices_f3{
-    int NumdoComando;
-    int vezesExec;
-}infos_f3;
-// Nó que contem Os Dados e posições do nó da frente
-typedef struct NOS_2{
-    struct Dices infos;
-    struct NOS_2* next;
-}NOF_2;
-// "Cabeçalho" da Fila onde Contem seu Inicio e Fim
-typedef struct Fila_2{
-    NOF_2* ini;
-    NOF_2* fim;
-}sFila_2;
-sFila_2 *alloc_fila_2(){
-    return malloc(sizeof(sFila_2));
-}
-NOF_2 *alloc_nos_2(){
-    return malloc(sizeof(NOF_2));
-}
-void ini_fila_2(sFila_2 *fl){
-    fl->ini = NULL;
-    fl->fim = NULL;
-}
-
-///Pilha Dinamica.--------------.///
-typedef struct Dices_f3p{
-    int NumdoComando;
-    int vezesExec;
-}infos_f3p;
-
-typedef struct spilha_2*Pilha_2; //Ponteiro para Ponteiro
-
-typedef struct spilha_2{
-    struct Dices_f3p infos_f3p;
-    struct spilha_2 *top;
-}NOP_2;
-
-Pilha_2* alloc_pilha_2(){
-    return malloc(sizeof(Pilha_2));
-}
-NOP_2* alloc_nosP_2(){
-    return malloc(sizeof(NOP_2));
-}
-void ini_pilha_2(Pilha_2 *pl){
-    *pl = NULL;
-}
+NOP* alloc_nosP();
+void ini_pilha(Pilha *pl);
 ///-----------------------------------------------///
 
 
 
-
+int Move_Player_F3(char **MAT,int vida){
+    return 1;
+}
 
 
 

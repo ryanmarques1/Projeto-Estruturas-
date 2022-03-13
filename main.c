@@ -69,7 +69,6 @@ int main()
                 }else{
                     printf("\n----------------------=FASE 1 Concluída=-----------------------------\n\n");
                     destroi_fila(f);
-                    break;
                 }
                 printf("\n");
             }
@@ -117,6 +116,7 @@ int main()
                     }
                 }else{
                     printf("\n----------------------=FASE 2 Concluida=-----------------------------\n\n");
+                    destroi_pilha(pl);
                 }
                 printf("\n");
             }
