@@ -4,10 +4,14 @@
 
 
 ///------------------------------------------------------------------------------------------------------------------------------------
+//Funções da lib_1.h
 void Orientacoes1(int ot,char** MAT,int* x, int* y);
 void Orientacoes2(int* ot, char c);
-void Dados_Player_F1(int ot,int vida);
+void Dados_Player(int ot,int vida);
 void Att_Tab(char **TabMat, int dimensao);
+void Comandos_F1();
+
+
 //Estrutura Fila Dinâmica.
 // Dados Da Fila (Struct Dices)
 typedef struct Dices{
@@ -57,10 +61,8 @@ void destroi_fila(sFila *f){
             free(aux);
         }
         free(f);
-        printf("\nDeu certo!\n");
         return;
     }
-    printf("\nNão deu certo!\n");
 }
 ///------------------------------------------------------------------------------------------------------------------------------------
 ///-------------------------///
@@ -122,7 +124,8 @@ int Move_Player_F1(sFila *f,char** MAT, int vida){
             }
             Att_Tab(MAT,h);
         }
-        Dados_Player_F1(ot,vida);
+        Comandos_F1();
+        Dados_Player(ot,vida);
         NOF* aux2 = aux;
         aux = aux->next;
         free(aux2);
@@ -164,6 +167,14 @@ void traps_fase1(char **TabMat){
     TabMat[7][5] = 'X';
     TabMat[7][6] = 'X';
     ///----------------///
+}
+
+void Comandos_F1(){
+    printf("\n-=-=-=-=-=-=-= Comandos =-=-=-=-=-=-=-\n");
+    printf("1) [F,D,F]\t"); //Comando 1
+    printf("2) [F,F]\t");     //Comando 2
+    printf("3) [D,F,F]\t"); //Comando 3
+    printf("4) [E,F,F]\n"); //Comando 4
 }
 
 #endif // CHAPTER1_H_INCLUDED

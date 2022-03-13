@@ -65,21 +65,21 @@ char** Create_Tabuleiro(int dimensao){
 }
 
 //Imprime o Tabuleiro
-void Impress_Tabuleiro(char **TabMat, int dimensao){
-    int i,j;
-    for(i = 0; i < dimensao; i++){
-        printf("|---|---|---|---|---|---|---|---|\n");
-        for(j  = 0; j < dimensao; j++){
-            if(j == 0) printf("|");
-            printf(" %c |", TabMat[i][j]);
-            if(j == 7) printf("\n");
-        }
-        if(i == 7)  printf("|---|---|---|---|---|---|---|---|\n");
-    }
-
-}
+//void Impress_Tabuleiro(char **TabMat, int dimensao){
+//    int i,j;
+//    for(i = 0; i < dimensao; i++){
+//        printf("|---|---|---|---|---|---|---|---|\n");
+//        for(j  = 0; j < dimensao; j++){
+//            if(j == 0) printf("|");
+//            printf(" %c |", TabMat[i][j]);
+//            if(j == 7) printf("\n");
+//        }
+//        if(i == 7)  printf("|---|---|---|---|---|---|---|---|\n");
+//    }
+//
+//}
 ///---------------------------===========--------------------==================////
-void Orientacoes1(int ot,char** MAT,int* x, int* y){
+void Orientacoes1(int ot,char** MAT,int* x, int* y){ //Função de Andar
     if(ot == 1){
         *y = *y + 1;
         if(MAT[(*x)][(*y)] == 'X' || *y >= 8){//P volta a sua posição anterior pois tem obstaculo
@@ -120,7 +120,7 @@ void Orientacoes1(int ot,char** MAT,int* x, int* y){
     }
 }
 
-void Orientacoes2(int* ot, char c){
+void Orientacoes2(int* ot, char c){ // Função de Girar
     if(*ot == 1){ // Direção para Direita
         if(c == 'D'){
             *ot = 4;
@@ -154,14 +154,7 @@ void Orientacoes2(int* ot, char c){
 }
 ///---------------------------===========--------------------==================////
 //Imprime Dados do Player
-void Dados_Player_F1(int ot,int vida){
-    printf("\n-=-=-=-=-=-=-= Comandos =-=-=-=-=-=-=-\n");
-    printf("1) [F,D,F]\t"); //Comando 1
-    printf("2) [F,F]\t");     //Comando 2
-    printf("3) [D,F,F]\t"); //Comando 3
-    printf("4) [E,F,F]\n"); //Comando 4
-
-
+void Dados_Player(int ot,int vida){
     printf("\n-=-=-=-=-=-=-= Status do Player =-=-=-=-=-=-=-\n");
     if(ot == 1){
         printf("P >\tVida: %d\n", vida);
@@ -177,10 +170,9 @@ void Dados_Player_F1(int ot,int vida){
     }
     printf("\n");
 }
-//Atualização da tabela.
+
 //Atualização da Tabela
 void Att_Tab(char **TabMat, int dimensao){
-
     int i,j;
     for(i = 0; i < dimensao; i++){
         printf("|---|---|---|---|---|---|---|---|\n");
