@@ -63,11 +63,6 @@ int Move_Player_F2(Pilha *pl,char** MAT, int vida){
     // Direita = 1 | Esquerda = 2 | Acima = 3 | Baixo = 4
     int ot = 4,i,x=0,y=0,h=8;
 
-
-//    printf("1) [D,F,F,E]\t"); //Comando 1
-//    printf("2) [F,F]\t");     //Comando 2
-//    printf("3) [F,E,F,F]\t"); //Comando 3
-
     while(aux != NULL){
         if(aux->infos_f2.NumdoComando == 1){
             for(i = 0; i < aux->infos_f2.vezesExec; i++){
@@ -108,7 +103,7 @@ int Move_Player_F2(Pilha *pl,char** MAT, int vida){
     }
 }
 void traps_fase2(char **TabMat){
-    ///Fase 2 TRAPS.///(Incompleto)
+    ///Fase 2 TRAPS
     TabMat[0][1] = 'X';
     TabMat[0][4] = 'X';
     TabMat[0][5] = 'X';

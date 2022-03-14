@@ -80,42 +80,60 @@ char** Create_Tabuleiro(int dimensao){
 //}
 ///---------------------------===========--------------------==================////
 void Orientacoes1(int ot,char** MAT,int* x, int* y){ //Função de Andar
-    if(ot == 1){
+    if(ot == 1){// Para Direita
         *y = *y + 1;
-        if(MAT[(*x)][(*y)] == 'X' || *y >= 8){//P volta a sua posição anterior pois tem obstaculo
+        if(*y < 8){
+            if(MAT[(*x)][(*y)] == 'X'){//P volta a sua posição anterior pois tem obstaculo
+                *y = *y - 1;
+            }else{// P assume a posição se não houver obstaculo
+                MAT[(*x)][(*y)] = 'P';
+                MAT[(*x)][(*y-1)] = ' ';
+            }
+        }else{
             *y = *y - 1;
-        }else{// P assume a posição se não houver obstaculo
-            MAT[(*x)][(*y)] = 'P';
-            MAT[(*x)][(*y-1)] = ' ';
         }
     }else
-    if(ot == 2){
+    if(ot == 2){ // Para Esquerda
         *y = *y - 1;
-        if(MAT[(*x)][(*y)] == 'X' || *y < 0){//P volta a sua posição anterior pois tem obstaculo
+        if(*y > -1){
+            if(MAT[(*x)][(*y)] == 'X'){//P volta a sua posição anterior pois tem obstaculo
+                *y = *y + 1;
+            }else{// P assume a posição se não houver obstaculo
+                MAT[(*x)][(*y)] = 'P';
+                MAT[(*x)][(*y+1)] = ' ';
+            }
+        }else{
             *y = *y + 1;
-        }else{// P assume a posição se não houver obstaculo
-            MAT[(*x)][(*y)] = 'P';
-            MAT[(*x)][(*y+1)] = ' ';
+
         }
+
     }
     else
-    if(ot == 3){
+    if(ot == 3){ // Para Cima
         *x = *x - 1;
-        if(MAT[(*x)][(*y)] == 'X' || *x < 0){//P volta a sua posição anterior pois tem obstaculo
+        if(*x > -1){
+            if(MAT[(*x)][(*y)] == 'X'){//P volta a sua posição anterior pois tem obstaculo
+                *x = *x + 1;
+            }else{// P assume a posição se não houver obstaculo
+                MAT[(*x)][(*y)] = 'P';
+                MAT[(*x+1)][(*y)] = ' ';
+            }
+        }else{
             *x = *x + 1;
-        }else{// P assume a posição se não houver obstaculo
-            MAT[(*x)][(*y)] = 'P';
-            MAT[(*x+1)][(*y)] = ' ';
         }
     }
     else
-    if(ot == 4){
+    if(ot == 4){ // Para Baixo
         *x = *x + 1;
-        if(MAT[(*x)][(*y)] == 'X' || *x >= 8){//P volta a sua posição anterior pois tem obstaculo
+        if(*x < 8){
+            if(MAT[(*x)][(*y)] == 'X'){//P volta a sua posição anterior pois tem obstaculo
+                *x = *x - 1;
+            }else{ // P assume a posição se não houver obstaculo
+                MAT[(*x)][(*y)] = 'P';
+                MAT[(*x-1)][(*y)] = ' ';
+            }
+        }else{
             *x = *x - 1;
-        }else{ // P assume a posição se não houver obstaculo
-            MAT[(*x)][(*y)] = 'P';
-            MAT[(*x-1)][(*y)] = ' ';
         }
     }
 }
@@ -163,7 +181,7 @@ void Dados_Player(int ot,int vida){
         printf("< P\tVida: %d\n", vida);
     }else
     if(ot == 3){
-        printf("P^\tVida: %d\n^\n", vida);
+        printf("P1\tVida: %d\n^\n", vida);
     }else
     if(ot == 4){
         printf("P\tVida: %d\nv\n", vida);
