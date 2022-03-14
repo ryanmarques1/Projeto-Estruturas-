@@ -1,6 +1,6 @@
 #ifndef CHAPTER2_H_INCLUDED
 #define CHAPTER2_H_INCLUDED
-#include "lib_1.h"
+
 
 //Funções da lib_1.h
 void Orientacoes1(int ot,char** MAT,int* x, int* y);

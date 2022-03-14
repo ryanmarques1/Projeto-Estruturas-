@@ -1,17 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
-#include <time.h>
-#include <string.h>
 #include "lib_1.h"
-
-
 int main()
 {
     setlocale(LC_ALL,"");
-    infos info_f1;
-    infos_f2 info_f2;
-    char **MAT;
+    infos info_f1; //Referente as infos fila.
+    infos_f2 info_f2; //Referentes as infos pilha.
+    char **MAT; //Matriz referente ao Tabuleiro.
     int n,op, dimensao = 8;
     ///Inicio
     do{
@@ -21,7 +17,6 @@ int main()
         scanf("%d", &op);
         printf("\n");
         printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
-
         switch(op){
         case 1:
             /// Fase 1
@@ -40,13 +35,14 @@ int main()
                 Att_Tab(MAT,dimensao);
                 Comandos_F1();
                 Dados_Player(1,vida);
-                printf("Digite 0 0 para finalizar!\n");
+                printf("Digite | 0 0 | para finalizar!\n");
                 while(1){
                     printf("Digite o número referente a seção de comandos listado acima(Ex: 1 [F,D,F]): ");
                     scanf("%d",&info_f1.NumdoComando);
                     printf("\n");
-                    printf("Quantidade de vezes que o comando repetiá: ");
+                    printf("Quantidade de vezes que o comando repetirá: ");
                     scanf("%d",&info_f1.vezesExec);
+                    printf("\n_____________________________________________________________________________\n");
                     if(info_f1.NumdoComando > 4 || (info_f1.NumdoComando <= 0 && info_f1.vezesExec != 0)){
                         printf("Comando digitado é inválido. Digite novamente!\n");
                         continue;
@@ -96,6 +92,7 @@ int main()
                     printf("\n");
                     printf("Quantidade de vezes que o comando repetirá: ");
                     scanf("%d",&info_f2.vezesExec);
+                    printf("\n_____________________________________________________________________________\n");
                     if(info_f2.NumdoComando > 3 || (info_f2.NumdoComando <= 0 && info_f2.vezesExec != 0)){
                         printf("Comando digitado é inválido. Digite novamente!\n");
                         continue;
@@ -155,7 +152,7 @@ int main()
                     printf("Quantidade de vezes que o comando repetirá: ");
                     scanf("%d",&info_f1.vezesExec);
                     printf("\n_____________________________________________________________________________\n");
-                    if(info_f1.NumdoComando > 4 || (info_f1.NumdoComando <= 0 && info_f1.vezesExec != 0)){
+                    if(info_f1.NumdoComando > 3 || (info_f1.NumdoComando <= 0 && info_f1.vezesExec != 0)){
                         printf("Comando digitado é inválido. Digite novamente!\n");
                         continue;
                     }
@@ -196,7 +193,6 @@ int main()
                     traps_fase3(MAT);
                     MAT[0][0] = 'O';
                     MAT[7][7] = 'P';
-
                     Att_Tab(MAT,dimensao);
                     Comandos_F3();
                     Dados_Player(ot,vida);
@@ -207,6 +203,7 @@ int main()
                         printf("\n");
                         printf("Quantidade de vezes que o comando repetirá: ");
                         scanf("%d",&info_f2.vezesExec);
+                        printf("\n_____________________________________________________________________________\n");
                         if(info_f2.NumdoComando > 3 || (info_f2.NumdoComando <= 0 && info_f2.vezesExec != 0)){
                             printf("Comando digitado é inválido. Digite novamente!\n");
                             continue;
@@ -233,7 +230,6 @@ int main()
                 }
                 break;
             }
-
             break; //Break Case 1
         case 2:
             Instrucoes();
@@ -245,7 +241,7 @@ int main()
             Exit();
             break;
         default:
-            printf("Opcao invalida!\n\n");
+            printf("Opção invalida!\n\n");
             break;
         }
     }while(op != 5);

@@ -181,7 +181,7 @@ void Dados_Player(int ot,int vida){
         printf("< P\tVida: %d\n", vida);
     }else
     if(ot == 3){
-        printf("P1\tVida: %d\n^\n", vida);
+        printf("P\tVida: %d\n^\n", vida);
     }else
     if(ot == 4){
         printf("P\tVida: %d\nv\n", vida);

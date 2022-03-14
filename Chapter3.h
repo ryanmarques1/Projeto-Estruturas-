@@ -1,23 +1,15 @@
 #ifndef CHAPTER3_H_INCLUDED
 #define CHAPTER3_H_INCLUDED
-#include "lib_1.h"
-#include "Chapter1.h"
-#include "Chapter2.h"
+
+
 ///Funções auxiliares.
 void Orientacoes1(int ot,char** MAT,int* x, int* y);
 void Orientacoes2(int* ot, char c);
 void Dados_Player(int ot,int vida);
 void Att_Tab(char **TabMat, int dimensao);
 void Comandos_F3();
-///-------------------Sobre as Estruturas----------------------///
 
-NOF* alloc_nos();
-void ini_fila(sFila *f);
-
-
-NOP* alloc_nosP();
-void ini_pilha(Pilha *pl);
-///-----------------------------------------------///
+///--------------------------------------------------------///
 
 
 //Movimentação da Parte 1 (Fila)
