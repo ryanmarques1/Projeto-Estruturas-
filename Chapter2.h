@@ -125,7 +125,7 @@ void traps_fase2(char **TabMat){
     TabMat[7][5] = 'X';
     ///-------------///
 }
-void Comandos_F2(){
+void Comandos_F2(void){
     printf("\n-=-=-=-=-=-=-= Comandos =-=-=-=-=-=-=-\n");
     printf("1) [D,F,F,E]\t"); //Comando 1
     printf("2) [F,F]\t");     //Comando 2

@@ -11,7 +11,7 @@ int main()
     int n,op, dimensao = 8;
     ///Inicio
     do{
-        int vida = 3;
+        int vida;
         menu();
         printf("Digite sua Opção: ");
         scanf("%d", &op);
@@ -20,6 +20,7 @@ int main()
         switch(op){
         case 1:
             /// Fase 1
+            vida = 3;
             while(vida != 0){
                 printf("\n--------------------------=Fase 1=-----------------------------\n\n");
                 sFila *f =  NULL;
@@ -37,7 +38,7 @@ int main()
                 Dados_Player(1,vida);
                 printf("Digite | 0 0 | para finalizar!\n");
                 while(1){
-                    printf("Digite o número referente a seção de comandos listado acima(Ex: 1 [F,D,F]): ");
+                    printf("Digite o número referente a seção de comandos listado acima(Ex, 1) [F,D,F]): ");
                     scanf("%d",&info_f1.NumdoComando);
                     printf("\n");
                     printf("Quantidade de vezes que o comando repetirá: ");
@@ -69,6 +70,7 @@ int main()
             }
 
 /// Fase 2 ------------------------------------------------------------------------------------------------------------
+            vida = 3;
             while(vida != 0){
                 printf("\n--------------------------=Fase 2=-----------------------------\n\n");
                 Pilha *pl = NULL;
@@ -87,7 +89,7 @@ int main()
                 Dados_Player(4,vida);
                 printf("Digite 0 0 para finalizar!\n");
                 while(1){
-                    printf("Digite o número referente a seção de comandos listado acima(Ex: 2 [F,F]):");
+                    printf("Digite o número referente a seção de comandos listado acima(Ex, 2) [F,F]):");
                     scanf("%d",&info_f2.NumdoComando);
                     printf("\n");
                     printf("Quantidade de vezes que o comando repetirá: ");
@@ -119,6 +121,7 @@ int main()
             }
 
 /// Fase 3 ------------------------------------------------------------------------------------------------------------
+            vida = 3;
             while(vida != 0){
                 printf("\n--------------------------=Fase 3=-----------------------------\n\n");
 
@@ -146,7 +149,7 @@ int main()
 
                 while(1){
                     /// Parte 1 - Fila
-                    printf("Digite o NÚMERO referente a seção de comandos listado acima(Ex: 1 [F,D,F]): ");
+                    printf("Digite o NÚMERO referente a seção de comandos listado acima(Ex, 1) [F,D,F]): ");
                     scanf("%d",&info_f1.NumdoComando);
                     printf("\n");
                     printf("Quantidade de vezes que o comando repetirá: ");
@@ -198,7 +201,7 @@ int main()
                     Dados_Player(ot,vida);
                     printf("Digite 0 0 para finalizar!\n");
                     while(1){
-                        printf("Digite o número referente a seção de comandos listado acima(Ex: 2 [F,F]):");
+                        printf("Digite o número referente a seção de comandos listado acima(Ex, 2)[F,F]):");
                         scanf("%d",&info_f2.NumdoComando);
                         printf("\n");
                         printf("Quantidade de vezes que o comando repetirá: ");
@@ -248,3 +251,4 @@ int main()
     return 0;
 }
 //
+

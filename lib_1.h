@@ -9,16 +9,16 @@
 /// Menu Programa
 
 // Menu do Programa
-void menu(){
-    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-    printf("=-=-=-=-=-=    Jogo    -=-=-=-=-=-=\n");
-    printf("=-=-=    Comandos Em Loop    -=-=-=\n");
-    printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
-    printf("Menu de Opcoes\n");
-    printf("1 - Iniciar Jogo\n");
-    printf("2 - Instruções\n");
-    printf("3 - Créditos\n");
-    printf("4 - Sair\n\n");
+void menu(void){
+    printf("\t\t=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+    printf("\t\t=-=-=-=-=-=    Jogo    -=-=-=-=-=-=\n");
+    printf("\t\t=-=-=    Comandos Em Loop    -=-=-=\n");
+    printf("\t\t=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
+    printf("- |Menu de Opções\n");
+    printf("- |1 => Iniciar Jogo\n");
+    printf("- |2 => Instruções\n");
+    printf("- |3 => Créditos\n");
+    printf("- |4 => Sair\n\n");
 }
 
 // Instruções de como jogar
@@ -37,14 +37,13 @@ void Credits(void){
 void Exit(void){
     char ex;
     printf("\nDesejas sair do jogo? \n");
-    printf("Y -> Sim , N -> Não");
+    printf("Pressione alguma tecla -> Sim , N -> Não");
     printf(": ");
     getchar();
     scanf("%c", &ex);
     if(ex == 'N' || ex == 'n') return;
     else exit(0);
 }
-
 /// Menu Fase
 
 // Cria o Tabuleiro atribuindo valores a posições da Matriz
@@ -63,21 +62,6 @@ char** Create_Tabuleiro(int dimensao){
     }
     return TabMat;
 }
-
-//Imprime o Tabuleiro
-//void Impress_Tabuleiro(char **TabMat, int dimensao){
-//    int i,j;
-//    for(i = 0; i < dimensao; i++){
-//        printf("|---|---|---|---|---|---|---|---|\n");
-//        for(j  = 0; j < dimensao; j++){
-//            if(j == 0) printf("|");
-//            printf(" %c |", TabMat[i][j]);
-//            if(j == 7) printf("\n");
-//        }
-//        if(i == 7)  printf("|---|---|---|---|---|---|---|---|\n");
-//    }
-//
-//}
 ///---------------------------===========--------------------==================////
 void Orientacoes1(int ot,char** MAT,int* x, int* y){ //Função de Andar
     if(ot == 1){// Para Direita

@@ -169,7 +169,7 @@ void traps_fase1(char **TabMat){
     ///----------------///
 }
 
-void Comandos_F1(){
+void Comandos_F1(void){
     printf("\n-=-=-=-=-=-=-= Comandos =-=-=-=-=-=-=-\n");
     printf("1) [F,D,F]\t"); //Comando 1
     printf("2) [F,F]\t");     //Comando 2
