@@ -8,6 +8,8 @@ void Orientacoes2(int* ot, char c);
 void Dados_Player(int ot,int vida);
 void Att_Tab(char **TabMat, int dimensao);
 void Comandos_F3();
+void Imprimir_Fila(NOF* aux);
+void Imprimir_Pilha(NOP* aux);
 
 ///--------------------------------------------------------///
 
@@ -44,10 +46,13 @@ int Move_Player_F3_P1(sFila *f,char **MAT,int vida){
         }
         Comandos_F3();
         Dados_Player(ot,vida);
-        printf("\n\n------------------------=======================------------------------\n\n");
+        printf("\nComando %d-%d Executado\n",aux->infos.NumdoComando,aux->infos.vezesExec);
         NOF* aux2 = aux;
         aux = aux->next;
         free(aux2);
+        Imprimir_Fila(aux);
+        system("pause");
+        system("cls");
     }
     //F recebe Aux para resetar, ou seja, falar que lista ta vazia
     f->ini=aux;
@@ -92,10 +97,13 @@ int Move_Player_F3_P2(Pilha *pl,char** MAT, int vida,int ot){
         }
         Comandos_F3();
         Dados_Player(ot,vida);// Mostrar a vida do Player
-        printf("\n\n------------------------=======================------------------------\n\n");
+        printf("\nComando %d-%d Executado\n",aux->infos_f2.NumdoComando,aux->infos_f2.vezesExec);
         NOP* aux2 = aux;
         aux = aux->top;
         free(aux2);
+        Imprimir_Pilha(aux);
+        system("pause");
+        system("cls");
     }
     *pl = NULL;
     if(x == 0 && y == 0){
@@ -140,9 +148,9 @@ void traps_fase3(char** TabMat){
 ///---Comandos_F3---///
 
 void Comandos_F3(void){
-    printf("\n-=-=-=-=-=-=-= Comandos =-=-=-=-=-=-=-\n");
-    printf("1) [D,F,F]\t"); //Comando 1
-    printf("2) [F,F]\t");     //Comando 2
+    printf("\n\t\t\t\t-=-=-=-=-=-=-=-=-=-=- Comandos -=-=-=-=-=-=-=-=-=-=-\n");
+    printf("\t\t\t\t  1) [D,F,F]\t"); //Comando 1
+    printf("\t2) [F,F]\t");     //Comando 2
     printf("3) [E,F,F]\t"); //Comando 3
 }
 #endif // CHAPTER3_H_INCLUDED

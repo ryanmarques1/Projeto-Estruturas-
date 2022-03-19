@@ -19,10 +19,12 @@ int main()
         printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
         switch(op){
         case 1:
-            /// Fase 1
+/// Fase 1 ---------------------------------------------------------------------------------------------------------------------------
+            system("cls");
             vida = 3;
             while(vida != 0){
-                printf("\n--------------------------=Fase 1=-----------------------------\n\n");
+                printf("\t\t\t-=-=-=-=-=-=-=-=-=-=-=-=-=-=   FASE 1   =-=-=-=-=-=-=-=-=-=-=-=-=-=-\n");
+                printf("\t\t\t-=-=-=-=-=-=-=-=-=-=   Chegue ao Objetivo (O)   =-=-=-=-=-=-=-=-=-=-\n\n");
                 sFila *f =  NULL;
                 f = alloc_fila();
                 if(f == NULL){ //se for null, erro ao alocar, senão inicia fila.
@@ -36,33 +38,57 @@ int main()
                 Att_Tab(MAT,dimensao);
                 Comandos_F1();
                 Dados_Player(1,vida);
-                printf("Digite | 0 0 | para finalizar!\n");
+                printf("\t\t\t\t\t   Digite | 0 0 | para finalizar!\n\n");
                 while(1){
                     printf("Digite o número referente a seção de comandos listado acima(Ex, 1) [F,D,F]): ");
                     scanf("%d",&info_f1.NumdoComando);
-                    printf("\n");
                     printf("Quantidade de vezes que o comando repetirá: ");
                     scanf("%d",&info_f1.vezesExec);
-                    printf("\n_____________________________________________________________________________\n");
+                    printf("\n");
                     if(info_f1.NumdoComando > 4 || (info_f1.NumdoComando <= 0 && info_f1.vezesExec != 0)){
                         printf("Comando digitado é inválido. Digite novamente!\n");
                         continue;
                     }
                     if(info_f1.NumdoComando == 0 && info_f1.vezesExec == 0){
+                        system("cls");
                         break;
                     }
                     insere_listaComandos_F1(f,info_f1);
                 }
                 n = Move_Player_F1(f,MAT,vida);
                 if(n == 0){
-                    printf("\n----------------------=Uma vida a menos =( (Você não tem 7 vidas...)=-----------------------------\n");
+                    printf("\n\t\t===----------------------> Voce perdeu 1 vida. Não Chegue a 0 <----------------------===\n");
                     vida--;
                     if(vida == 0){
-                        printf("\n----------------------=GAME OVER=-----------------------------\n");
+                        printf("\n\t\t\t##########################################################################\n"
+                               "\t\t\t##########################################################################\n"
+                               "\t\t\t####               #####           ####       ##       ##             ####\n"
+                               "\t\t\t####   ###############     #####     ##   #        #   ##   ##############\n"
+                               "\t\t\t####   ###          ##               ##   ####  ####   ##             ####\n"
+                               "\t\t\t####   ##########   ##   #########   ##   ##########   ##   ##############\n"
+                               "\t\t\t####                ##   #########   ##   ##########   ##             ####\n"
+                               "\t\t\t##########################################################################\n"
+                               "\t\t\t####                ##   #########   ##              ##               ####\n"
+                               "\t\t\t####   ##########   ##   #########   ##   #############   #########   ####\n"
+                               "\t\t\t####   ##########   ##     #####     ##              ##               ####\n"
+                               "\t\t\t####   ##########   ####     #     ####   #############   #   ############\n"
+                               "\t\t\t####                ######       ######              ##   #           ####\n"
+                               "\t\t\t##########################################################################\n"
+                               "\t\t\t##########################################################################\n");
+
+                        system("pause");
+                        system("cls");
                         break;
                     }
                 }else{
-                    printf("\n----------------------=FASE 1 Concluída=-----------------------------\n\n");
+                    printf("\n\t\t\t\t|==================================================|\n");
+                    printf("\t\t\t\t|-X-|-X-|-X-| -->     PARABÉNS     <-- |-X-|-X-|-X-|\n");
+                    printf("\t\t\t\t|-X-|-X-|-X-| --> FASE 1 CONCLUÍDA <-- |-X-|-X-|-X-|\n");
+                    printf("\t\t\t\t|==================================================|\n");
+                    printf("\n\t\t\t\t\t     --> COMEÇANDO A FASE 2 <--\n\n");
+                    system("pause");
+                    system("cls");
+                    vida = 3;
                     destroi_fila(f);
                     break;
                 }
@@ -70,9 +96,9 @@ int main()
             }
 
 /// Fase 2 ------------------------------------------------------------------------------------------------------------
-            vida = 3;
             while(vida != 0){
-                printf("\n--------------------------=Fase 2=-----------------------------\n\n");
+                printf("\t\t\t-=-=-=-=-=-=-=-=-=-=-=-=-=-=   FASE 2   =-=-=-=-=-=-=-=-=-=-=-=-=-=-\n");
+                printf("\t\t\t-=-=-=-=-=-=-=-=-=-=   Chegue ao Objetivo (O)   =-=-=-=-=-=-=-=-=-=-\n\n");
                 Pilha *pl = NULL;
                 pl = alloc_pilha();
 
@@ -87,43 +113,67 @@ int main()
                 Att_Tab(MAT,dimensao);
                 Comandos_F2();
                 Dados_Player(4,vida);
-                printf("Digite 0 0 para finalizar!\n");
+                printf("\t\t   Digite | 0 0 | para finalizar! Obs: Escreva do ultimo comando ao primeiro\n\n");
                 while(1){
                     printf("Digite o número referente a seção de comandos listado acima(Ex, 2) [F,F]):");
                     scanf("%d",&info_f2.NumdoComando);
-                    printf("\n");
                     printf("Quantidade de vezes que o comando repetirá: ");
                     scanf("%d",&info_f2.vezesExec);
-                    printf("\n_____________________________________________________________________________\n");
+                    printf("\n");
                     if(info_f2.NumdoComando > 3 || (info_f2.NumdoComando <= 0 && info_f2.vezesExec != 0)){
                         printf("Comando digitado é inválido. Digite novamente!\n");
                         continue;
                     }
                     if(info_f2.NumdoComando == 0 && info_f2.vezesExec == 0){
+                        system("cls");
                         break;
                     }
                     insere_listaComandos_F2(pl,info_f2);
                 }
                 n = Move_Player_F2(pl,MAT,vida);
                 if(n == 0){
-                    printf("\n----------------------=Uma vida a menos =( (Você não tem 7 vidas...)=-----------------------------\n");
+                    printf("\n\t\t===----------------------> Voce perdeu 1 vida. Não Chegue a 0 <----------------------===");
                     vida--;
                     if(vida == 0){
-                        printf("\n----------------------=GAME OVER=-----------------------------\n");
+                        printf("\n\t\t\t##########################################################################\n"
+                               "\t\t\t##########################################################################\n"
+                               "\t\t\t####               #####           ####       ##       ##             ####\n"
+                               "\t\t\t####   ###############     #####     ##   #        #   ##   ##############\n"
+                               "\t\t\t####   ###          ##               ##   ####  ####   ##             ####\n"
+                               "\t\t\t####   ##########   ##   #########   ##   ##########   ##   ##############\n"
+                               "\t\t\t####                ##   #########   ##   ##########   ##             ####\n"
+                               "\t\t\t##########################################################################\n"
+                               "\t\t\t####                ##   #########   ##              ##               ####\n"
+                               "\t\t\t####   ##########   ##   #########   ##   #############   #########   ####\n"
+                               "\t\t\t####   ##########   ##     #####     ##              ##               ####\n"
+                               "\t\t\t####   ##########   ####     #     ####   #############   #   ############\n"
+                               "\t\t\t####                ######       ######              ##   #           ####\n"
+                               "\t\t\t##########################################################################\n"
+                               "\t\t\t##########################################################################\n");
+
+                        system("pause");
+                        system("cls");
                         break;
                     }
                 }else{
-                    printf("\n----------------------=FASE 2 Concluida=-----------------------------\n\n");
+                    printf("\n\t\t\t\t|==================================================|\n");
+                    printf("\t\t\t\t|-X-|-X-|-X-| -->     PARABÉNS     <-- |-X-|-X-|-X-|\n");
+                    printf("\t\t\t\t|-X-|-X-|-X-| --> FASE 2 CONCLUÍDA <-- |-X-|-X-|-X-|\n");
+                    printf("\t\t\t\t|==================================================|\n");
+                    printf("\n\t\t\t\t\t     --> COMEÇANDO A FASE 3 <--\n\n");
+                    system("pause");
+                    system("cls");
+                    vida = 3;
                     destroi_pilha(pl);
                     break;
                 }
                 printf("\n");
             }
 
-/// Fase 3 ------------------------------------------------------------------------------------------------------------
-            vida = 3;
+/// Fase 3 ---------------------------------------------------------------------------------------------------------------------------
             while(vida != 0){
-                printf("\n--------------------------=Fase 3=-----------------------------\n\n");
+                printf("\t\t\t-=-=-=-=-=-=-=-=-=-=-=   FASE 3 - Parte 1   =-=-=-=-=-=-=-=-=-=-=-=-\n");
+                printf("\t\t\t-=-=-=-=-=-=-=-=-=-=   Chegue ao Objetivo (O)   =-=-=-=-=-=-=-=-=-=-\n\n");
 
                 //Fila ----------
                 sFila *f =  NULL;
@@ -145,93 +195,132 @@ int main()
                 Att_Tab(MAT,dimensao);
                 Comandos_F3();
                 Dados_Player(4,vida);
-                printf("Digite 0 0 para finalizar!\n");
+                printf("\t\t\t\t\t   Digite | 0 0 | para finalizar!\n\n");
 
                 while(1){
                     /// Parte 1 - Fila
                     printf("Digite o NÚMERO referente a seção de comandos listado acima(Ex, 1) [F,D,F]): ");
                     scanf("%d",&info_f1.NumdoComando);
-                    printf("\n");
                     printf("Quantidade de vezes que o comando repetirá: ");
                     scanf("%d",&info_f1.vezesExec);
-                    printf("\n_____________________________________________________________________________\n");
+                    printf("\n");
                     if(info_f1.NumdoComando > 3 || (info_f1.NumdoComando <= 0 && info_f1.vezesExec != 0)){
                         printf("Comando digitado é inválido. Digite novamente!\n");
                         continue;
                     }
                     if(info_f1.NumdoComando == 0 && info_f1.vezesExec == 0){
+                        system("cls");
                         break;
                     }
                     insere_listaComandos_F1(f,info_f1);
                 }
                 n = Move_Player_F3_P1(f,MAT,vida);
                 if(n == 0){
-                    printf("\n----------------------=Uma vida a menos =( (Você não tem 7 vidas...)=-----------------------------\n");
+                    printf("\n\t\t===----------------------> Voce perdeu 1 vida. Não Chegue a 0 <----------------------===");
                     vida--;
                     if(vida == 0){
-                        printf("\n----------------------=GAME OVER=-----------------------------\n");
+                        printf("\n\t\t\t##########################################################################\n"
+                               "\t\t\t##########################################################################\n"
+                               "\t\t\t####               #####           ####       ##       ##             ####\n"
+                               "\t\t\t####   ###############     #####     ##   #        #   ##   ##############\n"
+                               "\t\t\t####   ###          ##               ##   ####  ####   ##             ####\n"
+                               "\t\t\t####   ##########   ##   #########   ##   ##########   ##   ##############\n"
+                               "\t\t\t####                ##   #########   ##   ##########   ##             ####\n"
+                               "\t\t\t##########################################################################\n"
+                               "\t\t\t####                ##   #########   ##              ##               ####\n"
+                               "\t\t\t####   ##########   ##   #########   ##   #############   #########   ####\n"
+                               "\t\t\t####   ##########   ##     #####     ##              ##               ####\n"
+                               "\t\t\t####   ##########   ####     #     ####   #############   #   ############\n"
+                               "\t\t\t####                ######       ######              ##   #           ####\n"
+                               "\t\t\t##########################################################################\n"
+                               "\t\t\t##########################################################################\n");
+
+                        system("pause");
+                        system("cls");
                         break;
                     }
                 }else{
-                    printf("\n----------------------=FASE 3 Parte 1 Concluida=-----------------------------\n\n");
+                    printf("\t\t\t-=-=-=-=-=-=-=-=   FASE 3 - Parte 1 Concluída   =-=-=-=-=-=-=-=-=-=-\n");
                     destroi_fila(f);
+                    break;
                 }
                 printf("\n");
-
+            }
                 ///Fase 3 - Parte 2 (Pilha)
-                int ot = n;
-                while(vida != 0){
-                    printf("\n--------------------------=Fase 3 Parte 2=-----------------------------\n");
-                    printf("------=Seu Objetivo agora é voltar ao Inicio, Ponto 'O' na Tabela!=-----\n\n");
-                    Pilha *pl = NULL;
-                    pl = alloc_pilha();
+            int ot = n;
+            while(vida != 0){
+                printf("\t\t\t-=-=-=-=-=-=-=-=-=-=-=   FASE 3 - Parte 2   =-=-=-=-=-=-=-=-=-=-=-=-\n");
+                printf("\t\t\t-=-=-=-=-=-=-=-=   Chegue ao Início, Objetivo (O)   =-=-=-=-=-=-=-=-\n\n");
+                Pilha *pl = NULL;
+                pl = alloc_pilha();
 
-                    if(pl == NULL){
-                        printf("\nErro de alocação\n");
-                        exit(1);
-                    }else{
-                        ini_pilha(pl);
+                if(pl == NULL){
+                    printf("\nErro de alocação\n");
+                    exit(1);
+                }else{
+                    ini_pilha(pl);
+                }
+                MAT = Create_Tabuleiro(dimensao);
+                traps_fase3(MAT);
+                MAT[0][0] = 'O';
+                MAT[7][7] = 'P';
+                Att_Tab(MAT,dimensao);
+                Comandos_F3();
+                Dados_Player(ot,vida);
+                printf("\t\t   Digite | 0 0 | para finalizar! Obs: Escreva do ultimo comando ao primeiro\n\n");
+                while(1){
+                    printf("Digite o número referente a seção de comandos listado acima(Ex, 2)[F,F]):");
+                    scanf("%d",&info_f2.NumdoComando);
+                    printf("Quantidade de vezes que o comando repetirá: ");
+                    scanf("%d",&info_f2.vezesExec);
+                    printf("\n");
+                    if(info_f2.NumdoComando > 3 || (info_f2.NumdoComando <= 0 && info_f2.vezesExec != 0)){
+                        printf("Comando digitado é inválido. Digite novamente!\n");
+                        continue;
                     }
-                    MAT = Create_Tabuleiro(dimensao);
-                    traps_fase3(MAT);
-                    MAT[0][0] = 'O';
-                    MAT[7][7] = 'P';
-                    Att_Tab(MAT,dimensao);
-                    Comandos_F3();
-                    Dados_Player(ot,vida);
-                    printf("Digite 0 0 para finalizar!\n");
-                    while(1){
-                        printf("Digite o número referente a seção de comandos listado acima(Ex, 2)[F,F]):");
-                        scanf("%d",&info_f2.NumdoComando);
-                        printf("\n");
-                        printf("Quantidade de vezes que o comando repetirá: ");
-                        scanf("%d",&info_f2.vezesExec);
-                        printf("\n_____________________________________________________________________________\n");
-                        if(info_f2.NumdoComando > 3 || (info_f2.NumdoComando <= 0 && info_f2.vezesExec != 0)){
-                            printf("Comando digitado é inválido. Digite novamente!\n");
-                            continue;
-                        }
-                        if(info_f2.NumdoComando == 0 && info_f2.vezesExec == 0){
-                            break;
-                        }
-                        insere_listaComandos_F2(pl,info_f2);
-                    }
-                    n = Move_Player_F3_P2(pl,MAT,vida, ot);
-                    if(n == 0){
-                        printf("\n----------------------=Uma vida a menos =( (Você não tem 7 vidas...)=-----------------------------\n");
-                        vida--;
-                        if(vida == 0){
-                            printf("\n----------------------=GAME OVER=-----------------------------\n");
-                            break;
-                        }
-                    }else{
-                        printf("\n----------------------=FASE 3 Parte 2 Concluida=-----------------------------\n\n");
-                        destroi_pilha(pl);
+                    if(info_f2.NumdoComando == 0 && info_f2.vezesExec == 0){
+                        system("cls");
                         break;
                     }
-                    printf("\n");
+                    insere_listaComandos_F2(pl,info_f2);
                 }
-                break;
+                n = Move_Player_F3_P2(pl,MAT,vida, ot);
+                if(n == 0){
+                    printf("\n\t\t===----------------------> Voce perdeu 1 vida. Não Chegue a 0 <----------------------===");
+                    vida--;
+                    if(vida == 0){
+                        printf("\n\t\t\t##########################################################################\n"
+                           "\t\t\t##########################################################################\n"
+                           "\t\t\t####               #####           ####       ##       ##             ####\n"
+                           "\t\t\t####   ###############     #####     ##   #        #   ##   ##############\n"
+                           "\t\t\t####   ###          ##               ##   ####  ####   ##             ####\n"
+                           "\t\t\t####   ##########   ##   #########   ##   ##########   ##   ##############\n"
+                           "\t\t\t####                ##   #########   ##   ##########   ##             ####\n"
+                           "\t\t\t##########################################################################\n"
+                           "\t\t\t####                ##   #########   ##              ##               ####\n"
+                           "\t\t\t####   ##########   ##   #########   ##   #############   #########   ####\n"
+                           "\t\t\t####   ##########   ##     #####     ##              ##               ####\n"
+                           "\t\t\t####   ##########   ####     #     ####   #############   #   ############\n"
+                           "\t\t\t####                ######       ######              ##   #           ####\n"
+                           "\t\t\t##########################################################################\n"
+                           "\t\t\t##########################################################################\n");
+
+                    system("pause");
+                    system("cls");
+                        break;
+                    }
+                }else{
+                    printf("\n\t\t\t\t|==================================================|\n");
+                    printf("\t\t\t\t|-X-|-X-|-X-| -->     PARABÉNS     <-- |-X-|-X-|-X-|\n");
+                    printf("\t\t\t\t|-X-|-X-|-X-| -->    FIM DE JOGO   <-- |-X-|-X-|-X-|\n");
+                    printf("\t\t\t\t|-X-|-X-|-X-| -->    VOCÊ VENCEU   <-- |-X-|-X-|-X-|\n");
+                    printf("\t\t\t\t|==================================================|\n\n");
+                    system("pause");
+                    system("cls");
+                    destroi_pilha(pl);
+                    break;
+                }
+                printf("\n");
             }
             break; //Break Case 1
         case 2:
@@ -242,12 +331,13 @@ int main()
             break;
         case 4:
             Exit();
+            op=0;
             break;
         default:
             printf("Opção invalida!\n\n");
             break;
         }
-    }while(op != 5);
+    }while(op != 4);
     return 0;
 }
 //

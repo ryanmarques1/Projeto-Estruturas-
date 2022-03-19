@@ -42,6 +42,16 @@ void destroi_pilha(Pilha *pl){
         free(pl);
     }
 }
+
+void Imprimir_Pilha (NOP *aux){
+    printf("Comandos Restantes: ");
+    while(aux != NULL){
+        printf("%d-%d ",aux->infos_f2.NumdoComando,aux->infos_f2.vezesExec);
+        aux = aux->top;
+    }
+    printf("\n\n");
+}
+
 // Função que Insere os dados na Pilha (Comando e Numero de Vezes que irá repetir)
 void insere_listaComandos_F2(Pilha *pl, struct Dices_f2 infos_f2){
     NOP* nos = NULL;
@@ -91,9 +101,13 @@ int Move_Player_F2(Pilha *pl,char** MAT, int vida){
         }
         Comandos_F2();
         Dados_Player(ot,vida);// Mostrar a vida do Player
+        printf("\nComando %d-%d Executado\n",aux->infos_f2.NumdoComando,aux->infos_f2.vezesExec);
         NOP* aux2 = aux;
         aux = aux->top;
         free(aux2);
+        Imprimir_Pilha(aux);
+        system("pause");
+        system("cls");
     }
     *pl = NULL;
     if(x == 7 && y == 7){
@@ -126,9 +140,9 @@ void traps_fase2(char **TabMat){
     ///-------------///
 }
 void Comandos_F2(void){
-    printf("\n-=-=-=-=-=-=-= Comandos =-=-=-=-=-=-=-\n");
-    printf("1) [D,F,F,E]\t"); //Comando 1
-    printf("2) [F,F]\t");     //Comando 2
+    printf("\n\t\t\t\t-=-=-=-=-=-=-=-=-=-=- Comandos -=-=-=-=-=-=-=-=-=-=-\n");
+    printf("\t\t\t\t  1) [D,F,F,E]\t"); //Comando 1
+    printf("\t2) [F,F]\t");     //Comando 2
     printf("3) [F,E,F,F]\t"); //Comando 3
 }
 

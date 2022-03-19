@@ -66,7 +66,17 @@ void destroi_fila(sFila *f){
 }
 ///------------------------------------------------------------------------------------------------------------------------------------
 ///-------------------------///
-// Função que Insere os dados na Fila (Comando e Numero de Vezes que irá repetir
+void Imprimir_Fila (NOF *aux){
+    printf("Comandos Restantes: ");
+    while(aux != NULL){
+        printf("%d-%d ",aux->infos.NumdoComando,aux->infos.vezesExec);
+        aux = aux->next;
+    }
+
+    printf("\n\n");
+}
+
+// Função que Insere os dados na Fila (Comando e Numero de Vezes que irá repetir)
 void insere_listaComandos_F1(sFila *f, struct Dices infos){
     NOF* nos = NULL;
     nos = alloc_nos();
@@ -116,7 +126,7 @@ int Move_Player_F1(sFila *f,char** MAT, int vida){
             }
             Att_Tab(MAT,h);
         }else
-        if(aux->infos.NumdoComando == 4){
+        if(aux->infos.NumdoComando == 4){ //Comando D
             for(i = 0; i < aux->infos.vezesExec; i++){
                 Orientacoes2(&ot,'E');
                 Orientacoes1(ot,MAT,&x,&y);
@@ -126,9 +136,13 @@ int Move_Player_F1(sFila *f,char** MAT, int vida){
         }
         Comandos_F1();
         Dados_Player(ot,vida);
+        printf("\nComando %d-%d Executado\n",aux->infos.NumdoComando,aux->infos.vezesExec);
         NOF* aux2 = aux;
         aux = aux->next;
         free(aux2);
+        Imprimir_Fila(aux);
+        system("pause");
+        system("cls");
     }
     //F recebe Aux para resetar, ou seja, falar que lista ta vazia
     f->ini=aux;
@@ -170,10 +184,10 @@ void traps_fase1(char **TabMat){
 }
 
 void Comandos_F1(void){
-    printf("\n-=-=-=-=-=-=-= Comandos =-=-=-=-=-=-=-\n");
-    printf("1) [F,D,F]\t"); //Comando 1
-    printf("2) [F,F]\t");     //Comando 2
-    printf("3) [D,F,F]\t"); //Comando 3
+    printf("\n\t\t\t\t-=-=-=-=-=-=-=-=-=-=- Comandos -=-=-=-=-=-=-=-=-=-=-\n");
+    printf("\t\t1) [F,D,F]\t\t"); //Comando 1
+    printf("2) [F,F]\t\t");     //Comando 2
+    printf("    3) [D,F,F]\t\t"); //Comando 3
     printf("4) [E,F,F]\n"); //Comando 4
 }
 

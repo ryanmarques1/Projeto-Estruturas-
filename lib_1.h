@@ -10,10 +10,10 @@
 
 // Menu do Programa
 void menu(void){
-    printf("\t\t=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
-    printf("\t\t=-=-=-=-=-=    Jogo    -=-=-=-=-=-=\n");
-    printf("\t\t=-=-=    Comandos Em Loop    -=-=-=\n");
-    printf("\t\t=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
+    printf("\t\t\t\t=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
+    printf("\t\t\t\t=-=-=-=-=-=    Jogo    -=-=-=-=-=-=\n");
+    printf("\t\t\t\t=-=-=    Comandos Em Loop    -=-=-=\n");
+    printf("\t\t\t\t=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n\n");
     printf("- |Menu de Opções\n");
     printf("- |1 => Iniciar Jogo\n");
     printf("- |2 => Instruções\n");
@@ -23,26 +23,40 @@ void menu(void){
 
 // Instruções de como jogar
 void Instrucoes(void){
-    printf("Podes assumir 4 sentidos: Direita, Esquerda, Cima, Baixo (Depende da Seta de Indicação).\n");
-    printf("O Player possui 3 vidas e perde a vida caso o Player Não chegue ao final. Perdendo as 3 vidas GAME OVER.\n");
-    printf("\n3 dificuldades - Fase 1: Facil | Fase 2: Medio | Fase 3: Dificil\n");
+    system("cls");
+    printf("Instruções do Jogo:\n\n");
+    printf("1 - O Objetivo é chegar ao ponto (O) indicado em cada Tabela;\n");
+    printf("2 - Deve escrever primeiro o Comando e depois a quantidade de vezes que irá repetir, caso queira finalizar digite \"0 0\";");
+    printf("3 - O Player (P) possui 4 sentidos: Direita, Esquerda, Cima, Baixo (Depende da Seta de Indicação Mostrada).\n");
+    printf("4 - O Player (P) possui 3 vidas e perde a vida caso não chegue ao objetivo (O). Perdendo as 3 vidas GAME OVER. A Vida é resetada ao concluir cada FASE!\n\n");
+    system("pause");
+    system("cls");
 }
 
 // Função para mostrar o Grupo do Programa
 void Credits(void){
-    printf("Equipe: Ryan Marques, Bernardo Miranda, Mariana Castro\n\n");
+    system("cls");
+    printf("Equipe:\n1 - Ryan Marques;\n2 - Bernardo Miranda;\n3 - Mariana Castro\n\n");
+    printf("Projeto de Algoritmos e Estrutura de Dados - Jogo Comandos em Loop;\n");
+    printf("Uso Obrigatorio de Fila e Pilha em determiandas fases;\n\n\n");
+    system("pause");
+    system("cls");
 }
 
 // Função de Saida do Programa
 void Exit(void){
     char ex;
+    system("cls");
     printf("\nDesejas sair do jogo? \n");
-    printf("Pressione alguma tecla -> Sim , N -> Não");
+    printf("S -> Sim , N -> Não");
     printf(": ");
-    getchar();
-    scanf("%c", &ex);
-    if(ex == 'N' || ex == 'n') return;
-    else exit(0);
+    scanf(" %c", &ex);
+    if(ex == 'N' || ex == 'n'){
+        system("cls");
+        return;
+    }else{
+        exit(0);
+    }
 }
 /// Menu Fase
 
@@ -154,36 +168,35 @@ void Orientacoes2(int* ot, char c){ // Função de Girar
         }
     }
 }
-///---------------------------===========--------------------==================////
+///-----------------------------------------------------------------------------------------------------------------------------------
 //Imprime Dados do Player
 void Dados_Player(int ot,int vida){
-    printf("\n-=-=-=-=-=-=-= Status do Player =-=-=-=-=-=-=-\n");
+    printf("\n\t\t\t\t   -=-=-=-=-=-=-= Status do Player =-=-=-=-=-=-=-\n");
     if(ot == 1){
-        printf("P >\tVida: %d\n", vida);
+        printf("\t\t\t\t\t\t   P >\tVida: %d\n", vida);
     }else
     if(ot == 2){
-        printf("< P\tVida: %d\n", vida);
+        printf("\t\t\t\t\t\t   < P\tVida: %d\n", vida);
     }else
     if(ot == 3){
-        printf("P\tVida: %d\n^\n", vida);
+        printf("\t\t\t\t\t\t     ^\n\t\t\t\t\t\t     P\tVida: %d\n", vida);
     }else
     if(ot == 4){
-        printf("P\tVida: %d\nv\n", vida);
+        printf("\t\t\t\t\t\t     P\tVida: %d\n\t\t\t\t\t\t     v\n", vida);
     }
-    printf("\n");
 }
 
 //Atualização da Tabela
 void Att_Tab(char **TabMat, int dimensao){
     int i,j;
     for(i = 0; i < dimensao; i++){
-        printf("|---|---|---|---|---|---|---|---|\n");
+        printf("\t\t\t\t\t|---|---|---|---|---|---|---|---|\n");
         for(j  = 0; j < dimensao; j++){
-            if(j == 0) printf("|");
+            if(j == 0) printf("\t\t\t\t\t|");
             printf(" %c |", TabMat[i][j]);
             if(j == 7) printf("\n");
         }
-        if(i == 7)  printf("|---|---|---|---|---|---|---|---|\n");
+        if(i == 7)  printf("\t\t\t\t\t|---|---|---|---|---|---|---|---|\n");
     }
 }
 #endif // LIB_1_H_INCLUDED
