@@ -2,6 +2,14 @@
 #include <stdlib.h>
 #include <locale.h>
 #include "lib_1.h"
+/*
+======================================================================|
+#Equipe: 1 - Ryan Marques; 2 - Bernardo Miranda; 3 - Mariana Castro   |
+#Projeto de Algoritmos e Estrutura de Dados - Jogo Comandos em Loop   |
+#Uso Obrigatorio de Fila e Pilha em determiandas fases                |
+======================================================================|
+
+*/
 int main()
 {
     setlocale(LC_ALL,"");

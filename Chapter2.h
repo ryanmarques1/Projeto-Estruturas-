@@ -1,6 +1,13 @@
 #ifndef CHAPTER2_H_INCLUDED
 #define CHAPTER2_H_INCLUDED
+/*
+======================================================================|
+#Equipe: 1 - Ryan Marques; 2 - Bernardo Miranda; 3 - Mariana Castro   |
+#Projeto de Algoritmos e Estrutura de Dados - Jogo Comandos em Loop   |
+#Uso Obrigatorio de Fila e Pilha em determiandas fases                |
+======================================================================|
 
+*/
 
 //Funções da lib_1.h
 void Orientacoes1(int ot,char** MAT,int* x, int* y);
